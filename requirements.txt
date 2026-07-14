@@ -1,0 +1,7 @@
+openai>=1.40
+anthropic>=0.40
+streamlit>=1.38
+duckdb>=1.0
+python-dotenv>=1.0
+snowflake-connector-python>=3.12
+pandas>=2.0

@@ -1,0 +1,76 @@
+ACCOUNT_ID,COMPANY_NAME,INDUSTRY,SEGMENT,REGION,EMPLOYEE_COUNT,ARR_EUR,STATUS,CUSTOMER_SINCE,OWNER_AE,CREATED_AT
+ACC-0001,Brightline Retail GmbH,Retail,MM,DACH,580,92000.0,customer,2023-09-01,lena.koehler@personio.de,2023-09-01
+ACC-0002,Halcyon Hospitality Group,Hospitality,MM,Iberia,430,76000.0,customer,2022-04-01,lena.koehler@personio.de,2022-04-01
+ACC-0003,Fjord Logistics AS,Logistics,ENT,Nordics,2100,,prospect,,lena.koehler@personio.de,2025-12-14
+ACC-0004,Norden Manufacturing AB,Manufacturing,ENT,Nordics,1450,,prospect,,lena.koehler@personio.de,2026-02-14
+ACC-0005,Forge Education B.V.,Healthcare,MM,France,370,61813.0,customer,2024-03-10,marcus.byrne@personio.de,2024-03-10
+ACC-0006,Umbra Financial Services ApS,Financial Services,ENT,Iberia,4336,,churned,2023-06-28,lena.koehler@personio.de,2023-06-28
+ACC-0007,Tide Logistics AG,Logistics,MM,Benelux,650,53345.0,customer,2023-11-09,lena.koehler@personio.de,2023-11-09
+ACC-0008,Harbor Manufacturing AG,Professional Services,SMB,Benelux,134,,prospect,,lena.koehler@personio.de,2026-03-04
+ACC-0009,Meridian Hospitality SL,Hospitality,MM,France,944,,prospect,,sofia.alvarez@personio.de,2025-06-23
+ACC-0010,Cobalt Manufacturing B.V.,Construction,SMB,Iberia,26,29151.0,customer,2024-01-12,lena.koehler@personio.de,2024-01-12
+ACC-0011,Tide Education B.V.,Education,SMB,Benelux,80,,prospect,,ines.dubois@personio.de,2025-10-30
+ACC-0012,Vela Holding Oy,Professional Services,MM,Benelux,208,46952.0,customer,2024-09-18,lena.koehler@personio.de,2024-09-18
+ACC-0013,Elm Logistics Ltd,Logistics,MM,DACH,357,,prospect,,lena.koehler@personio.de,2026-03-18
+ACC-0014,Cinder Hospitality Ltd,Hospitality,ENT,UKI,3575,115843.0,customer,2025-08-08,ines.dubois@personio.de,2025-08-08
+ACC-0015,Wren Education Ltd,Logistics,SMB,Benelux,62,,churned,2024-07-25,ines.dubois@personio.de,2024-07-25
+ACC-0016,Forge Logistics ApS,Software,MM,DACH,810,61520.0,customer,2024-11-29,lena.koehler@personio.de,2024-11-29
+ACC-0017,Quartz Holding Ltd,Logistics,SMB,Nordics,170,22182.0,customer,2025-01-12,lena.koehler@personio.de,2025-01-12
+ACC-0018,Meridian Manufacturing B.V.,Hospitality,SMB,DACH,92,29654.0,customer,2022-10-16,lena.koehler@personio.de,2022-10-16
+ACC-0019,Verdant Financial Services SAS,Financial Services,MM,Iberia,381,,prospect,,lena.koehler@personio.de,2026-03-26
+ACC-0020,Vault Education ApS,Financial Services,SMB,Benelux,46,,prospect,,lena.koehler@personio.de,2025-07-05
+ACC-0021,Kestrel Holding B.V.,Education,SMB,Iberia,144,,prospect,,lena.koehler@personio.de,2025-10-06
+ACC-0022,Wren Manufacturing,Construction,MM,DACH,592,61581.0,customer,2024-11-20,marcus.byrne@personio.de,2024-11-20
+ACC-0023,Nimbus Solutions Ltd,Healthcare,MM,Nordics,948,80437.0,customer,2025-06-11,lena.koehler@personio.de,2025-06-11
+ACC-0024,Pivot Healthcare B.V.,Healthcare,MM,UKI,568,,churned,2025-04-15,marcus.byrne@personio.de,2025-04-15
+ACC-0025,Quill Capital SAS,Manufacturing,MM,Nordics,844,97406.0,customer,2024-11-08,sofia.alvarez@personio.de,2024-11-08
+ACC-0026,Verdant Professional Services Ltd,Professional Services,SMB,Iberia,48,26469.0,customer,2023-02-07,ines.dubois@personio.de,2023-02-07
+ACC-0027,Wren Manufacturing S.A.,Professional Services,MM,DACH,510,34751.0,customer,2024-10-11,sofia.alvarez@personio.de,2024-10-11
+ACC-0028,Lark Studios GmbH,Hospitality,SMB,Nordics,31,19142.0,customer,2024-02-14,ines.dubois@personio.de,2024-02-14
+ACC-0029,Gale Studios ApS,Professional Services,SMB,DACH,30,31129.0,customer,2023-03-08,lena.koehler@personio.de,2023-03-08
+ACC-0030,Iris Partners SL,Retail,ENT,France,2960,223244.0,customer,2023-06-24,sofia.alvarez@personio.de,2023-06-24
+ACC-0031,Echo Healthcare,Healthcare,MM,France,385,94777.0,customer,2025-04-19,lena.koehler@personio.de,2025-04-19
+ACC-0032,Northwind Construction Ltd,Construction,SMB,UKI,180,,prospect,,sofia.alvarez@personio.de,2025-06-19
+ACC-0033,Onyx Professional Services B.V.,Professional Services,MM,France,770,66738.0,customer,2023-03-08,thomas.weber@personio.de,2023-03-08
+ACC-0034,Kestrel Logistics,Logistics,SMB,UKI,197,,prospect,,sofia.alvarez@personio.de,2025-08-12
+ACC-0035,Ember Financial Services GmbH,Financial Services,SMB,Nordics,92,17491.0,customer,2026-01-25,lena.koehler@personio.de,2026-01-25
+ACC-0036,Kestrel Retail SL,Education,ENT,Benelux,3702,210523.0,customer,2023-06-01,lena.koehler@personio.de,2023-06-01
+ACC-0037,Bastion Labs B.V.,Retail,MM,Iberia,612,,prospect,,lena.koehler@personio.de,2025-11-27
+ACC-0038,Mosaic Education AG,Retail,SMB,DACH,194,16843.0,customer,2024-06-13,lena.koehler@personio.de,2024-06-13
+ACC-0039,Fjell Services ApS,Financial Services,SMB,Benelux,127,,prospect,,thomas.weber@personio.de,2025-06-22
+ACC-0040,Aurora Professional Services SAS,Professional Services,MM,Nordics,887,,prospect,,thomas.weber@personio.de,2026-02-17
+ACC-0041,Crescent Education SAS,Education,ENT,DACH,3158,,churned,2025-05-09,lena.koehler@personio.de,2025-05-09
+ACC-0042,Ember Professional ApS,Construction,SMB,Benelux,127,,prospect,,thomas.weber@personio.de,2025-05-11
+ACC-0043,Crescent Holding S.A.,Financial Services,MM,Nordics,641,61440.0,customer,2024-05-17,ines.dubois@personio.de,2024-05-17
+ACC-0044,Northwind Studios GmbH,Healthcare,SMB,Nordics,105,15207.0,customer,2025-06-15,marcus.byrne@personio.de,2025-06-15
+ACC-0045,Helix Software AG,Software,ENT,UKI,4870,302121.0,customer,2023-06-06,ines.dubois@personio.de,2023-06-06
+ACC-0046,Quartz Hospitality Oy,Hospitality,SMB,France,154,,churned,2024-03-22,thomas.weber@personio.de,2024-03-22
+ACC-0047,Stellar Systems,Software,MM,Benelux,291,64775.0,customer,2025-10-24,sofia.alvarez@personio.de,2025-10-24
+ACC-0048,Nimbus Construction SAS,Professional Services,MM,Nordics,669,,prospect,,lena.koehler@personio.de,2025-06-17
+ACC-0049,Ridge Financial Services ApS,Financial Services,MM,UKI,980,58503.0,customer,2023-11-13,lena.koehler@personio.de,2023-11-13
+ACC-0050,Rune Software B.V.,Software,ENT,France,2616,,prospect,,lena.koehler@personio.de,2026-04-05
+ACC-0051,Harbor Logistics,Healthcare,MM,UKI,921,83370.0,customer,2024-12-04,lena.koehler@personio.de,2024-12-04
+ACC-0052,Vault Education,Retail,MM,Iberia,948,82312.0,customer,2026-01-21,ines.dubois@personio.de,2026-01-21
+ACC-0053,Helix Education GmbH,Hospitality,SMB,UKI,141,30127.0,customer,2024-12-07,marcus.byrne@personio.de,2024-12-07
+ACC-0054,Verdant Software SL,Software,SMB,Benelux,180,19125.0,customer,2024-04-27,lena.koehler@personio.de,2024-04-27
+ACC-0055,Delta Healthcare,Healthcare,SMB,UKI,84,,prospect,,marcus.byrne@personio.de,2025-08-02
+ACC-0056,Delta Hospitality GmbH,Education,SMB,DACH,70,,prospect,,ines.dubois@personio.de,2026-03-04
+ACC-0057,Juniper Logistics S.A.,Education,SMB,Iberia,123,,churned,2023-02-05,marcus.byrne@personio.de,2023-02-05
+ACC-0058,Delta Logistics GmbH,Logistics,SMB,Benelux,137,13386.0,customer,2024-08-26,sofia.alvarez@personio.de,2024-08-26
+ACC-0059,Vault Professional Services,Professional Services,SMB,Nordics,79,14117.0,customer,2025-05-16,lena.koehler@personio.de,2025-05-16
+ACC-0060,Vela Capital AG,Hospitality,MM,DACH,880,36934.0,customer,2023-08-12,lena.koehler@personio.de,2023-08-12
+ACC-0061,Willow Holding,Construction,MM,UKI,382,,churned,2025-01-24,ines.dubois@personio.de,2025-01-24
+ACC-0062,Lattice Professional Services ApS,Professional Services,SMB,Nordics,49,23745.0,customer,2025-04-25,lena.koehler@personio.de,2025-04-25
+ACC-0063,Anvil Education AG,Education,SMB,France,63,,prospect,,lena.koehler@personio.de,2025-12-09
+ACC-0064,Vector Labs ApS,Professional Services,MM,UKI,908,63492.0,customer,2025-03-18,lena.koehler@personio.de,2025-03-18
+ACC-0065,Tide Solutions Ltd,Healthcare,MM,Nordics,914,85111.0,customer,2023-10-31,lena.koehler@personio.de,2023-10-31
+ACC-0066,Tide Professional B.V.,Education,ENT,UKI,2627,,prospect,,lena.koehler@personio.de,2025-04-27
+ACC-0067,Noble Foods B.V.,Financial Services,SMB,DACH,78,,prospect,,sofia.alvarez@personio.de,2025-12-17
+ACC-0068,Lattice Professional AG,Healthcare,SMB,Nordics,152,31565.0,customer,2025-10-31,lena.koehler@personio.de,2025-10-31
+ACC-0069,Sable Studios SAS,Hospitality,ENT,DACH,3479,311909.0,customer,2025-11-29,lena.koehler@personio.de,2025-11-29
+ACC-0070,Wren Healthcare GmbH,Healthcare,SMB,Nordics,41,,prospect,,sofia.alvarez@personio.de,2025-05-25
+ACC-0071,Tide Hospitality AG,Financial Services,SMB,Nordics,119,,prospect,,lena.koehler@personio.de,2025-11-06
+ACC-0072,Yonder Retail,Manufacturing,SMB,Nordics,186,,prospect,,lena.koehler@personio.de,2026-04-08
+ACC-0073,Vector Construction Ltd,Construction,SMB,UKI,20,14041.0,customer,2023-08-17,thomas.weber@personio.de,2023-08-17
+ACC-0074,Helix Software B.V.,Education,MM,Nordics,409,,prospect,,thomas.weber@personio.de,2026-03-20
+ACC-0075,Ivory Professional AG,Professional Services,SMB,DACH,110,,prospect,,lena.koehler@personio.de,2025-07-08

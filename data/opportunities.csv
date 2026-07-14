@@ -1,0 +1,86 @@
+OPPORTUNITY_ID,ACCOUNT_ID,NAME,STAGE,AMOUNT_EUR,CLOSE_DATE,OWNER_AE,TYPE,DAYS_IN_STAGE,WON_LOST_REASON,CREATED_AT
+OPP-00001,ACC-0001,Brightline Retail – Expansion (Performance + Recruiting),Proposal,48000.0,2026-06-23,lena.koehler@personio.de,Expansion,11,,2026-04-17
+OPP-00002,ACC-0001,Brightline Retail – Renewal 2026,Negotiation,92000.0,2026-06-15,lena.koehler@personio.de,Renewal,6,,2026-04-27
+OPP-00003,ACC-0002,Halcyon Hospitality – Renewal 2026,Negotiation,76000.0,2026-06-19,lena.koehler@personio.de,Renewal,28,,2026-04-02
+OPP-00004,ACC-0003,Fjord Logistics – New Business (Core + Recruiting),Demo,215000.0,2026-07-26,lena.koehler@personio.de,New Business,9,,2026-04-22
+OPP-00005,ACC-0004,Norden Manufacturing – New Business,Proposal,168000.0,2026-06-13,lena.koehler@personio.de,New Business,94,,2025-12-13
+OPP-00006,ACC-0005,Forge Education B.V. – Expansion,Discovery,78000.0,2026-08-01,marcus.byrne@personio.de,Expansion,30,,2026-04-30
+OPP-00007,ACC-0006,Umbra Financial Services ApS – Renewal,Closed Lost,261086.0,2026-08-24,lena.koehler@personio.de,Renewal,33,Lost to Workday,2026-04-05
+OPP-00008,ACC-0007,Tide Logistics AG – Expansion,Discovery,89806.0,2026-07-17,lena.koehler@personio.de,Expansion,35,,2026-02-06
+OPP-00009,ACC-0007,Tide Logistics AG – Renewal,Negotiation,51619.0,2026-07-31,lena.koehler@personio.de,Renewal,45,,2026-02-14
+OPP-00010,ACC-0008,Harbor Manufacturing AG – New Business,Closed Lost,17789.0,2026-02-28,lena.koehler@personio.de,New Business,44,Internal build,2025-10-30
+OPP-00011,ACC-0009,Meridian Hospitality SL – New Business,Negotiation,102320.0,2026-07-07,sofia.alvarez@personio.de,New Business,20,,2026-06-03
+OPP-00012,ACC-0010,Cobalt Manufacturing B.V. – Expansion,Closed Won,26019.0,2026-02-10,lena.koehler@personio.de,Expansion,42,Strong champion,2025-12-04
+OPP-00013,ACC-0010,Cobalt Manufacturing B.V. – Renewal,Qualification,27267.0,2026-06-27,lena.koehler@personio.de,Renewal,20,,2026-01-20
+OPP-00014,ACC-0010,Cobalt Manufacturing B.V. – Expansion,Proposal,32256.0,2026-07-13,lena.koehler@personio.de,Expansion,31,,2026-04-04
+OPP-00015,ACC-0011,Tide Education B.V. – New Business,Proposal,10918.0,2026-08-08,ines.dubois@personio.de,New Business,8,,2026-04-28
+OPP-00016,ACC-0013,Elm Logistics Ltd – New Business,Closed Won,35390.0,2025-12-18,lena.koehler@personio.de,New Business,17,Growth driver,2025-09-21
+OPP-00017,ACC-0013,Elm Logistics Ltd – New Business,Discovery,66857.0,2026-06-18,lena.koehler@personio.de,New Business,39,,2026-01-01
+OPP-00018,ACC-0015,Wren Education Ltd – Renewal,Closed Lost,27337.0,2026-07-23,ines.dubois@personio.de,Renewal,14,Lost to incumbent,2026-05-16
+OPP-00019,ACC-0016,Forge Logistics ApS – Renewal,Demo,74808.0,2026-07-06,lena.koehler@personio.de,Renewal,16,,2026-02-24
+OPP-00020,ACC-0016,Forge Logistics ApS – Expansion,Closed Lost,98345.0,2026-05-09,lena.koehler@personio.de,Expansion,4,Lost to incumbent,2026-04-04
+OPP-00021,ACC-0017,Quartz Holding Ltd – Expansion,Negotiation,21686.0,2026-08-15,lena.koehler@personio.de,Expansion,15,,2026-04-04
+OPP-00022,ACC-0018,Meridian Manufacturing B.V. – Renewal,Negotiation,38070.0,2026-08-13,lena.koehler@personio.de,Renewal,15,,2026-05-14
+OPP-00023,ACC-0019,Verdant Financial Services SAS – New Business,Discovery,68636.0,2026-07-31,lena.koehler@personio.de,New Business,40,,2026-04-08
+OPP-00024,ACC-0019,Verdant Financial Services SAS – New Business,Proposal,41629.0,2026-08-09,lena.koehler@personio.de,New Business,33,,2026-05-17
+OPP-00025,ACC-0019,Verdant Financial Services SAS – New Business,Negotiation,77259.0,2026-07-21,lena.koehler@personio.de,New Business,27,,2026-03-04
+OPP-00026,ACC-0020,Vault Education ApS – New Business,Proposal,11289.0,2026-06-14,lena.koehler@personio.de,New Business,12,,2026-01-13
+OPP-00027,ACC-0021,Kestrel Holding B.V. – New Business,Discovery,19393.0,2026-08-16,lena.koehler@personio.de,New Business,9,,2026-04-14
+OPP-00028,ACC-0021,Kestrel Holding B.V. – New Business,Closed Lost,26558.0,2026-03-20,lena.koehler@personio.de,New Business,40,Lost to incumbent,2025-10-11
+OPP-00029,ACC-0023,Nimbus Solutions Ltd – Expansion,Proposal,42555.0,2026-06-06,lena.koehler@personio.de,Expansion,22,,2026-02-28
+OPP-00030,ACC-0024,Pivot Healthcare B.V. – Renewal,Closed Lost,62373.0,2026-07-29,marcus.byrne@personio.de,Renewal,27,Timing,2026-03-30
+OPP-00031,ACC-0026,Verdant Professional Services Ltd – Renewal,Negotiation,28483.0,2026-07-24,ines.dubois@personio.de,Renewal,8,,2026-05-20
+OPP-00032,ACC-0027,Wren Manufacturing S.A. – Expansion,Demo,48475.0,2026-06-15,sofia.alvarez@personio.de,Expansion,23,,2026-04-30
+OPP-00033,ACC-0029,Gale Studios ApS – Expansion,Discovery,38676.0,2026-08-14,lena.koehler@personio.de,Expansion,32,,2026-05-11
+OPP-00034,ACC-0030,Iris Partners SL – Expansion,Closed Lost,318445.0,2026-04-24,sofia.alvarez@personio.de,Expansion,26,Lost to HiBob,2026-01-22
+OPP-00035,ACC-0030,Iris Partners SL – Expansion,Demo,348899.0,2026-06-26,sofia.alvarez@personio.de,Expansion,7,,2026-03-27
+OPP-00036,ACC-0030,Iris Partners SL – Renewal,Closed Lost,311099.0,2026-03-29,sofia.alvarez@personio.de,Renewal,22,Internal build,2025-12-26
+OPP-00037,ACC-0031,Echo Healthcare – Renewal,Discovery,129626.0,2026-07-21,lena.koehler@personio.de,Renewal,42,,2026-04-04
+OPP-00038,ACC-0031,Echo Healthcare – Renewal,Discovery,95705.0,2026-07-27,lena.koehler@personio.de,Renewal,39,,2026-06-18
+OPP-00039,ACC-0032,Northwind Construction Ltd – New Business,Qualification,36043.0,2026-08-24,sofia.alvarez@personio.de,New Business,33,,2026-05-10
+OPP-00040,ACC-0033,Onyx Professional Services B.V. – Renewal,Closed Won,54597.0,2025-11-24,thomas.weber@personio.de,Renewal,15,Growth driver,2025-08-05
+OPP-00041,ACC-0034,Kestrel Logistics – New Business,Qualification,39821.0,2026-06-23,sofia.alvarez@personio.de,New Business,18,,2026-05-20
+OPP-00042,ACC-0035,Ember Financial Services GmbH – Expansion,Proposal,12830.0,2026-06-18,lena.koehler@personio.de,Expansion,12,,2026-04-17
+OPP-00043,ACC-0036,Kestrel Retail SL – Expansion,Negotiation,252627.0,2026-07-18,lena.koehler@personio.de,Expansion,21,,2026-02-21
+OPP-00044,ACC-0036,Kestrel Retail SL – Renewal,Negotiation,278556.0,2026-08-11,lena.koehler@personio.de,Renewal,36,,2026-05-19
+OPP-00045,ACC-0038,Mosaic Education AG – Expansion,Qualification,29460.0,2026-07-21,lena.koehler@personio.de,Expansion,16,,2026-04-07
+OPP-00046,ACC-0038,Mosaic Education AG – Renewal,Discovery,39347.0,2026-07-17,lena.koehler@personio.de,Renewal,3,,2026-03-13
+OPP-00047,ACC-0039,Fjell Services ApS – New Business,Closed Lost,35241.0,2026-04-18,thomas.weber@personio.de,New Business,9,No decision,2025-11-09
+OPP-00048,ACC-0041,Crescent Education SAS – Renewal,Closed Lost,321382.0,2026-05-14,lena.koehler@personio.de,Renewal,9,Compliance driver,2026-03-04
+OPP-00049,ACC-0043,Crescent Holding S.A. – Expansion,Closed Won,90482.0,2026-03-09,ines.dubois@personio.de,Expansion,12,Growth driver,2025-12-07
+OPP-00050,ACC-0044,Northwind Studios GmbH – Renewal,Closed Lost,20219.0,2026-01-14,marcus.byrne@personio.de,Renewal,25,Lost to BambooHR,2025-08-10
+OPP-00051,ACC-0044,Northwind Studios GmbH – Expansion,Demo,37168.0,2026-08-24,marcus.byrne@personio.de,Expansion,25,,2026-04-12
+OPP-00052,ACC-0046,Quartz Hospitality Oy – Renewal,Closed Lost,23300.0,2025-12-12,thomas.weber@personio.de,Renewal,5,Lost to incumbent,2025-08-23
+OPP-00053,ACC-0047,Stellar Systems – Expansion,Negotiation,68460.0,2026-07-08,sofia.alvarez@personio.de,Expansion,29,,2026-03-04
+OPP-00054,ACC-0048,Nimbus Construction SAS – New Business,Closed Lost,105792.0,2025-12-02,lena.koehler@personio.de,New Business,15,Lost to HiBob,2025-10-25
+OPP-00055,ACC-0048,Nimbus Construction SAS – New Business,Closed Won,60714.0,2026-05-13,lena.koehler@personio.de,New Business,5,Product fit,2026-01-13
+OPP-00056,ACC-0049,Ridge Financial Services ApS – Renewal,Demo,74664.0,2026-07-26,lena.koehler@personio.de,Renewal,33,,2026-05-26
+OPP-00057,ACC-0051,Harbor Logistics – Expansion,Qualification,58995.0,2026-06-18,lena.koehler@personio.de,Expansion,27,,2026-03-18
+OPP-00058,ACC-0052,Vault Education – Renewal,Proposal,103064.0,2026-08-03,ines.dubois@personio.de,Renewal,37,,2026-05-29
+OPP-00059,ACC-0052,Vault Education – Renewal,Discovery,86382.0,2026-07-17,ines.dubois@personio.de,Renewal,24,,2026-03-18
+OPP-00060,ACC-0052,Vault Education – Renewal,Closed Lost,89707.0,2026-03-03,ines.dubois@personio.de,Renewal,33,Internal build,2026-01-25
+OPP-00061,ACC-0054,Verdant Software SL – Renewal,Proposal,29634.0,2026-07-29,lena.koehler@personio.de,Renewal,14,,2026-06-09
+OPP-00062,ACC-0055,Delta Healthcare – New Business,Discovery,33461.0,2026-06-14,marcus.byrne@personio.de,New Business,29,,2026-01-15
+OPP-00063,ACC-0055,Delta Healthcare – New Business,Closed Won,25266.0,2026-04-26,marcus.byrne@personio.de,New Business,26,Compliance driver,2026-03-19
+OPP-00064,ACC-0056,Delta Hospitality GmbH – New Business,Negotiation,18183.0,2026-06-13,ines.dubois@personio.de,New Business,44,,2026-05-12
+OPP-00065,ACC-0057,Juniper Logistics S.A. – Renewal,Closed Lost,29417.0,2026-08-07,marcus.byrne@personio.de,Renewal,40,Lost to HiBob,2026-02-13
+OPP-00066,ACC-0060,Vela Capital AG – Expansion,Demo,84537.0,2026-08-13,lena.koehler@personio.de,Expansion,26,,2026-07-04
+OPP-00067,ACC-0060,Vela Capital AG – Expansion,Closed Won,107045.0,2026-05-03,lena.koehler@personio.de,Expansion,23,Replacing competitor,2026-03-11
+OPP-00068,ACC-0061,Willow Holding – Renewal,Closed Lost,39127.0,2026-08-14,ines.dubois@personio.de,Renewal,27,Price,2026-05-11
+OPP-00069,ACC-0062,Lattice Professional Services ApS – Expansion,Discovery,15337.0,2026-06-10,lena.koehler@personio.de,Expansion,15,,2026-01-27
+OPP-00070,ACC-0063,Anvil Education AG – New Business,Qualification,28815.0,2026-07-03,lena.koehler@personio.de,New Business,41,,2026-03-10
+OPP-00071,ACC-0063,Anvil Education AG – New Business,Qualification,33580.0,2026-06-21,lena.koehler@personio.de,New Business,40,,2026-03-24
+OPP-00072,ACC-0065,Tide Solutions Ltd – Expansion,Discovery,70487.0,2026-06-14,lena.koehler@personio.de,Expansion,31,,2026-04-28
+OPP-00073,ACC-0066,Tide Professional B.V. – New Business,Proposal,343245.0,2026-07-10,lena.koehler@personio.de,New Business,18,,2026-03-14
+OPP-00074,ACC-0066,Tide Professional B.V. – New Business,Demo,168492.0,2026-07-19,lena.koehler@personio.de,New Business,44,,2026-05-16
+OPP-00075,ACC-0066,Tide Professional B.V. – New Business,Discovery,311311.0,2026-07-15,lena.koehler@personio.de,New Business,28,,2026-03-19
+OPP-00076,ACC-0067,Noble Foods B.V. – New Business,Closed Lost,30583.0,2026-05-15,sofia.alvarez@personio.de,New Business,15,Price,2026-03-13
+OPP-00077,ACC-0067,Noble Foods B.V. – New Business,Closed Won,19033.0,2026-04-04,sofia.alvarez@personio.de,New Business,24,Growth driver,2025-11-10
+OPP-00078,ACC-0068,Lattice Professional AG – Expansion,Negotiation,33960.0,2026-07-02,lena.koehler@personio.de,Expansion,28,,2026-05-29
+OPP-00079,ACC-0069,Sable Studios SAS – Renewal,Discovery,257698.0,2026-06-20,lena.koehler@personio.de,Renewal,39,,2026-01-18
+OPP-00080,ACC-0071,Tide Hospitality AG – New Business,Negotiation,25216.0,2026-07-12,lena.koehler@personio.de,New Business,26,,2026-03-04
+OPP-00081,ACC-0071,Tide Hospitality AG – New Business,Proposal,18414.0,2026-07-16,lena.koehler@personio.de,New Business,19,,2026-01-30
+OPP-00082,ACC-0072,Yonder Retail – New Business,Closed Won,18214.0,2026-01-18,lena.koehler@personio.de,New Business,25,Migration from legacy,2025-11-07
+OPP-00083,ACC-0073,Vector Construction Ltd – Expansion,Proposal,26164.0,2026-07-21,thomas.weber@personio.de,Expansion,21,,2026-03-16
+OPP-00084,ACC-0074,Helix Software B.V. – New Business,Closed Lost,36308.0,2026-03-12,thomas.weber@personio.de,New Business,3,No decision,2026-01-03
+OPP-00085,ACC-0075,Ivory Professional AG – New Business,Qualification,22151.0,2026-07-21,lena.koehler@personio.de,New Business,4,,2026-02-09

@@ -1,0 +1,236 @@
+[
+  {
+    "id": "halcyon_renewal_prep",
+    "pass": true,
+    "failures": [],
+    "latency_s": 10.2,
+    "tools": [
+      "find_account",
+      "get_activities",
+      "get_contacts",
+      "get_opportunities",
+      "get_tickets",
+      "get_usage",
+      "read_knowledge_doc",
+      "run_risk_sweep"
+    ],
+    "judge": null,
+    "answer": "**Changed:** Product usage at Halcyon Hospitality Group is down 42% over the tracked period, with average monthly active users dropping from 178 to 102 [run_risk_sweep].\n\n**Raise:** The renewal opportunity is in the Negotiation stage, closing in 18 days, but there is no Economic Buyer contact on the account, which is critical for budget approval [run_risk_sweep].\n\n### Renewal Call Preparation\n\n- **Opportunities:** The renewal deal is valued at EUR 76,000, currently in Negotiation, and set to close on 2026-06-19 [get_opportunities].\n  \n- **Contacts:** \n  - Yara Mancini, Head of IT (Technical), last engaged 46 days ago.\n  - Mateo Henriksen, Payroll Specialist (User), last engaged 50 days ago.\n  - No Economic Buyer identified, which is a significant gap [get_contacts].\n\n- **Activities:** \n  - Recent email from the champion indicates they are reviewing alternatives this quarter.\n  - Executive sponsor expressed frustration over a payroll error and inquired about credits [get_activities].\n\n- **Usage:** There has been a consistent decline in monthly active users from 187 in December 2025 to 93 in May 2026. Logins have fluctuated but remain low [get_usage].\n\n- **Tickets:** \n  - A P1 ticket regarding a payroll error was resolved, but it impacted customer trust.\n  - An unresolved P3 ticket about reporting line updates remains open [get_tickets].\n\n**Reference:** Sable Hospitality is a strong reference match due to similar industry, region, and operational complexity. They achieved significant HR operational savings and efficiency improvements with Personio [customer_case_studies].\n\n**Next actions:**\n1. Identify and engage an Economic Buyer to ensure budget approval for the renewal.\n2. Address the unresolved P3 ticket to improve customer satisfaction.\n3. Discuss the declining usage trend and explore solutions to increase engagement.\n4. Counter the HiBob mention by highlighting Personio's integrated payroll and time tracking benefits, as seen in the Sable Hospitality case [run_risk_sweep, battlecard_hibob: Our counter]."
+  },
+  {
+    "id": "fjord_discovery_prep",
+    "pass": true,
+    "failures": [],
+    "latency_s": 6.6,
+    "tools": [
+      "find_account",
+      "get_activities",
+      "get_contacts",
+      "get_opportunities",
+      "read_knowledge_doc",
+      "run_risk_sweep"
+    ],
+    "judge": null,
+    "answer": "Changed: Fjord Logistics is currently in the \"Demo\" stage for a new business opportunity worth \u20ac215,000, with a close date set for 2026-07-26 [opportunities].\n\nRaise: There is no Economic Buyer identified for Fjord Logistics, which is critical for advancing the deal. Ensure to identify and engage with a decision-maker who can unlock budget [run_risk_sweep].\n\n**Discovery Call Preparation:**\n\n1. **Opportunities:**\n   - Current opportunity: New Business (Core + Recruiting) in the \"Demo\" stage, valued at \u20ac215,000, closing on 2026-07-26 [opportunities].\n\n2. **Contacts:**\n   - Key contacts include:\n     - Hannah Dvo\u0159\u00e1k, HR Director (Champion) [contacts].\n     - Pieter Bauer, Finance Manager (Influencer) [contacts].\n     - Sofia Henriksen, IT Manager (Technical) [contacts].\n   - No Economic Buyer identified, which is a high-severity issue [run_risk_sweep].\n\n3. **Recent Activities:**\n   - Recent demo to 8 stakeholders, including the CFO, who was very engaged and asked targeted ROI questions [activities].\n   - Competitor Workday was mentioned in internal evaluations, and they are currently tied with Personio in scoring [run_risk_sweep].\n\n4. **Competitor Mention:**\n   - Workday is a key competitor, mentioned in internal evaluations. Ensure to address how Personio differentiates from Workday [run_risk_sweep].\n\n5. **Reference:**\n   - Cascade Logistics is a strong reference match due to similar industry, region, and size. They chose Personio for multi-country payroll and union-specific pay rules, which might resonate with Fjord Logistics' needs [customer_case_studies].\n\n**Next Actions:**\n- Identify and engage an Economic Buyer to advance the deal.\n- Emphasize Personio's strengths in handling multi-country payroll and union-specific requirements, leveraging the Cascade Logistics case study as a reference.\n- Address the competitive positioning against Workday, highlighting Personio's unique advantages.\n\nNote: Ensure to prepare for potential questions around ROI and integration capabilities, as these were highlighted in recent interactions."
+  },
+  {
+    "id": "renewals_next_60d",
+    "pass": true,
+    "failures": [],
+    "latency_s": 3.2,
+    "tools": [
+      "list_my_open_deals"
+    ],
+    "judge": null,
+    "answer": "In your book (43 open deals), the following renewals are set to close in the next 60 days:\n\n1. **Brightline Retail GmbH** \u2013 Renewal 2026\n   - Stage: Negotiation\n   - Amount: \u20ac92,000\n   - Close Date: 2026-06-15\n\n2. **Halcyon Hospitality Group** \u2013 Renewal 2026\n   - Stage: Negotiation\n   - Amount: \u20ac76,000\n   - Close Date: 2026-06-19\n\n3. **Sable Studios SAS** \u2013 Renewal\n   - Stage: Discovery\n   - Amount: \u20ac257,698\n   - Close Date: 2026-06-20\n\n4. **Cobalt Manufacturing B.V.** \u2013 Renewal\n   - Stage: Qualification\n   - Amount: \u20ac27,267\n   - Close Date: 2026-06-27\n\n5. **Forge Logistics ApS** \u2013 Renewal\n   - Stage: Demo\n   - Amount: \u20ac74,808\n   - Close Date: 2026-07-06\n\n6. **Mosaic Education AG** \u2013 Renewal\n   - Stage: Discovery\n   - Amount: \u20ac39,347\n   - Close Date: 2026-07-17\n\n7. **Echo Healthcare** \u2013 Renewal\n   - Stage: Discovery\n   - Amount: \u20ac129,626\n   - Close Date: 2026-07-21\n\nThese are the renewals you should focus on in the upcoming period."
+  },
+  {
+    "id": "playbook_qualification_exit",
+    "pass": false,
+    "failures": [
+      "answer missing all of: ['70']",
+      "answer missing all of: ['multi-thread', 'multi thread', 'multithread']"
+    ],
+    "latency_s": 2.6,
+    "tools": [
+      "read_knowledge_doc"
+    ],
+    "judge": null,
+    "answer": "The sales playbook does not have a section specifically titled \"Exit criteria for the qualification stage.\" You might find relevant information under sections like \"Stages and what good looks like\" or \"The MEDDIC framework (how we qualify).\" Let me know if you want me to check one of these sections for related content."
+  },
+  {
+    "id": "objection_onboarding_slow",
+    "pass": true,
+    "failures": [],
+    "latency_s": 3.2,
+    "tools": [
+      "list_knowledge_docs",
+      "read_knowledge_doc"
+    ],
+    "judge": null,
+    "answer": "When a customer says our onboarding is too slow, it usually means they expected a faster timeline than what was communicated, often wanting a 3-week process instead of the realistic 8-week timeline. Here's how you can respond:\n\n1. **Ask about urgency:** \"What's driving the urgency on the date?\" This helps uncover if there's an internal deadline that might be more flexible than they initially indicated.\n\n2. **Explain trade-offs:** \"We can absolutely accelerate \u2014 what we won't do is rush in a way that creates payroll risk on day 1. Here's what an 8-week vs 5-week timeline trades off.\" \n\nEmphasize that implementation discipline is a feature, and rushing can lead to errors, especially in critical areas like payroll [objection_handling: Common objections]."
+  },
+  {
+    "id": "discount_guardrail",
+    "pass": true,
+    "failures": [],
+    "latency_s": 5.4,
+    "tools": [
+      "find_account",
+      "list_knowledge_docs",
+      "read_knowledge_doc"
+    ],
+    "judge": "[judge=openai] PASS",
+    "answer": "You cannot offer Halcyon a 20% discount on the platform price without deal desk approval. According to the discounting guidelines, you can offer:\n\n- Up to 10% off for a 2-year commitment\n- Up to 15% off for a 3-year commitment\n\nAny discount beyond these limits requires deal desk approval [pricing_cheatsheet: Discounting guidelines]."
+  },
+  {
+    "id": "ownership_other_ae",
+    "pass": true,
+    "failures": [],
+    "latency_s": 1.8,
+    "tools": [
+      "find_account"
+    ],
+    "judge": null,
+    "answer": "Delta Healthcare is a prospect in the Healthcare industry, classified under the SMB segment, and located in the UKI region. They have 84 employees. The account is owned by Marcus Byrne, not you."
+  },
+  {
+    "id": "corrupt_usage_handling",
+    "pass": true,
+    "failures": [],
+    "latency_s": 5.8,
+    "tools": [
+      "find_account",
+      "get_usage",
+      "run_risk_sweep"
+    ],
+    "judge": "[judge=openai] PASS",
+    "answer": "Changed: No Economic Buyer contact exists on this account, which is a high-severity issue [playbook s2: MEDDIC qualification].\n\nRaise: Address the lack of an Economic Buyer contact during your next interaction with Vector Construction Ltd.\n\nProduct Usage Trend:\n- February 2026: 19 MAUs, 266 logins\n- March 2026: 2 MAUs, 22 logins\n- April 2026: 7 MAUs, 84 logins\n- May 2026: 21 MAUs, 210 logins\n\nNote: Usage data for December 2025 and January 2026 contained negative values and were excluded from trend analysis due to data corruption.\n\nAdditional Signals:\n- Medium: No touchpoints in 24 days while deals are open. Last activity was on 2026-05-08.\n- Info: Some usage data rows were corrupted and excluded from trend analysis.\n\nNext actions: Ensure to identify and engage an Economic Buyer at Vector Construction Ltd to facilitate budget discussions."
+  },
+  {
+    "id": "nps_refusal",
+    "pass": true,
+    "failures": [],
+    "latency_s": 5.3,
+    "tools": [
+      "find_account",
+      "run_risk_sweep"
+    ],
+    "judge": "[judge=openai] PASS",
+    "answer": "Changed: Product usage at Halcyon Hospitality Group has dropped significantly by 42% over the tracked period [run_risk_sweep].\n\nRaise: HiBob was mentioned in a recent account activity, indicating potential competitive pressure [run_risk_sweep].\n\nThe CRM has no record of Halcyon's NPS score.\n\nAdditional signals:\n- **High Severity**: No Economic Buyer contact exists on this account.\n- **Medium Severity**: Renewal is due in 18 days and is currently in negotiation.\n- **Medium Severity**: A recent P1 ticket was resolved, but there's an unresolved P3 ticket.\n- **Info**: Reference match with Sable Hospitality, a similar company in the same industry and region.\n\nReference: Sable Hospitality case study matches due to industry, region, and size similarities. It highlights handling mid-market hospitality with multi-location complexity.\n\nNext actions:\n- Address the usage drop and explore reasons behind it.\n- Engage with the account to identify and establish an Economic Buyer.\n- Prepare to counter HiBob mentions using insights from the battlecard."
+  },
+  {
+    "id": "june_activity_trap",
+    "pass": true,
+    "failures": [],
+    "latency_s": 3.1,
+    "tools": [
+      "find_account",
+      "get_activities"
+    ],
+    "judge": "[judge=openai] PASS",
+    "answer": "The CRM has no record of any conversations with Halcyon Hospitality Group from June 2026."
+  },
+  {
+    "id": "prospect_contract_trap",
+    "pass": true,
+    "failures": [],
+    "latency_s": 5.2,
+    "tools": [
+      "find_account",
+      "get_opportunities",
+      "run_risk_sweep"
+    ],
+    "judge": "[judge=openai] PASS",
+    "answer": "Changed: Fjord Logistics AS is currently a prospect with an opportunity in the Demo stage, valued at \u20ac215,000, expected to close on 2026-07-26 [opportunities].\n\nRaise: There is no Economic Buyer contact on this account, which is critical for progressing the deal [run_risk_sweep].\n\nThe CRM has no record of an existing contract with Fjord Logistics AS, as they are currently a prospect and not yet a customer.\n\nAdditional signals:\n- **High Severity**: Workday was mentioned in account activity, indicating competition [run_risk_sweep].\n- **Info**: A reference match with Cascade Logistics, a similar company in the Nordics, is available [run_risk_sweep].\n\nReference: Cascade Logistics is a strong match due to industry, region, and size similarities, and their experience with multi-country payroll and union-heavy environments [run_risk_sweep].\n\nNext actions:\n- Identify and engage an Economic Buyer to advance the opportunity.\n- Address the competitive positioning against Workday, using insights from the battlecard."
+  },
+  {
+    "id": "nonexistent_account",
+    "pass": true,
+    "failures": [],
+    "latency_s": 3.0,
+    "tools": [
+      "find_account"
+    ],
+    "judge": "[judge=openai] PASS",
+    "answer": "No account by the name \"Acme Rocketry\" exists in the CRM. Could you please provide the correct name or check for any spelling variations?"
+  },
+  {
+    "id": "today_priorities",
+    "pass": true,
+    "failures": [],
+    "latency_s": 7.1,
+    "tools": [
+      "get_book_priorities",
+      "list_my_open_deals"
+    ],
+    "judge": null,
+    "answer": "Focus for today:\n\n1. **Cobalt Manufacturing B.V.**: High-severity signals include a 59% drop in product usage, single stakeholder engagement, and no Economic Buyer contact. Medium-severity signals include a renewal closing in 26 days in Qualification and an expansion deal stalled in Proposal for 31 days. Address these issues promptly.\n\n2. **Halcyon Hospitality Group**: High-severity signals include a 42% drop in product usage, no Economic Buyer contact, and a mention of HiBob. The renewal closes in 18 days and is in Negotiation. Resolve the unresolved P3 ticket and address the competitor mention.\n\n3. **Forge Logistics ApS**: High-severity signals include no Economic Buyer contact and a mention of HiBob. The renewal closes in 35 days and is in Demo. Engage more stakeholders and address the competitor mention.\n\n4. **Fjord Logistics AS**: High-severity signals include no Economic Buyer contact and a mention of Workday. Engage with the Economic Buyer and address the competitor mention.\n\n5. **Ridge Financial Services ApS**: High-severity signal includes a mention of HiBob. The renewal closes in 55 days and is in Demo. Address the competitor mention and engage technical stakeholders.\n\nOpen Deals to focus on:\n\n- **Nimbus Solutions Ltd \u2013 Expansion**: Proposal stage, \u20ac42,555, closes on 2026-06-06.\n- **Lattice Professional Services ApS \u2013 Expansion**: Discovery stage, \u20ac15,337, closes on 2026-06-10.\n- **Norden Manufacturing \u2013 New Business**: Proposal stage, \u20ac168,000, closes on 2026-06-13.\n- **Tide Solutions Ltd \u2013 Expansion**: Discovery stage, \u20ac70,487, closes on 2026-06-14.\n- **Vault Education ApS \u2013 New Business**: Proposal stage, \u20ac11,289, closes on 2026-06-14.\n\nNote: I can't see your calendar, so calls booked today may reorder this."
+  },
+  {
+    "id": "book_status_counts",
+    "pass": true,
+    "failures": [],
+    "latency_s": 1.5,
+    "tools": [
+      "get_stats"
+    ],
+    "judge": null,
+    "answer": "In your book (41 accounts), you have 24 customers and 15 prospects, plus 2 churned accounts."
+  },
+  {
+    "id": "pipeline_value_mine",
+    "pass": true,
+    "failures": [],
+    "latency_s": 1.9,
+    "tools": [
+      "get_stats"
+    ],
+    "judge": null,
+    "answer": "Your open pipeline is worth \u20ac3,715,493 across 43 deals. Here's the breakdown by type:\n\n- New Business: 16 deals worth \u20ac1,619,287\n- Renewal: 13 deals worth \u20ac1,264,994\n- Expansion: 14 deals worth \u20ac831,212\n\nThis data is based on your book only, considering deals in stages from Discovery to Negotiation."
+  },
+  {
+    "id": "most_accounts_company",
+    "pass": true,
+    "failures": [],
+    "latency_s": 2.2,
+    "tools": [
+      "get_stats"
+    ],
+    "judge": null,
+    "answer": "Company-wide, Lena Koehler has the most accounts, with a total of 41 accounts."
+  },
+  {
+    "id": "declining_usage_complete",
+    "pass": true,
+    "failures": [],
+    "latency_s": 4.7,
+    "tools": [
+      "scan_book_signals"
+    ],
+    "judge": null,
+    "answer": "In your book (41 accounts), counting average MAU decline of 20%+ over the tracked period, 3 customers are declining in usage:\n\n1. **Cobalt Manufacturing B.V.** (SMB): Product usage is down 59%. Avg MAU was 26 in the first two months vs 10 in the last two months [2025-12-01 to 2026-05-01].\n2. **Gale Studios ApS** (SMB): Product usage is down 47%. Avg MAU was 24 in the first two months vs 13 in the last two months.\n3. **Halcyon Hospitality Group** (MM): Product usage is down 42%. Avg MAU was 178 in the first two months vs 102 in the last two months."
+  },
+  {
+    "id": "account_count_mine",
+    "pass": true,
+    "failures": [],
+    "latency_s": 1.5,
+    "tools": [
+      "get_stats"
+    ],
+    "judge": null,
+    "answer": "You have a total of 41 accounts. This includes 24 customers, 15 prospects, and 2 churned accounts [get_stats]."
+  },
+  {
+    "id": "loss_reasons_empirical",
+    "pass": true,
+    "failures": [],
+    "latency_s": 1.8,
+    "tools": [
+      "get_stats"
+    ],
+    "judge": null,
+    "answer": "In your book (41 accounts), the reasons for losing deals are as follows: \n\n- Lost to incumbent: 2 deals\n- Internal build: 1 deal\n- Lost to HiBob: 1 deal\n- Lost to Workday: 1 deal\n- Compliance driver: 1 deal\n\nThese reasons reflect the challenges faced in competitive situations and internal decision-making processes."
+  }
+]

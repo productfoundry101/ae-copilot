@@ -1,0 +1,300 @@
+CONTACT_ID,ACCOUNT_ID,FULL_NAME,ROLE_TITLE,PERSONA_TYPE,EMAIL,LAST_INTERACTION,CREATED_AT
+CON-00001,ACC-0001,Stefan Fischer,Operations Manager,Influencer,stefan.fischer@brightline.com,2026-05-11,2025-08-28
+CON-00002,ACC-0001,Niko Vogel,Operations Manager,Influencer,niko.vogel@brightline.com,2026-05-26,2025-11-05
+CON-00003,ACC-0001,Hannah Krause,Head of IT,Technical,hannah.krause@brightline.com,2025-12-15,2025-10-24
+CON-00004,ACC-0001,Greta Hofer,Finance Manager,Influencer,greta.hofer@brightline.com,2026-03-05,2025-05-27
+CON-00005,ACC-0002,Søren Petersen,IT Manager,Technical,soren.petersen@halcyon.com,2025-12-03,2025-05-22
+CON-00006,ACC-0002,Beatriz Quintero,Head of IT,Technical,beatriz.quintero@halcyon.com,2025-12-17,2025-01-26
+CON-00007,ACC-0002,Yara Mancini,Head of IT,Technical,yara.mancini@halcyon.com,2026-04-16,2025-08-02
+CON-00008,ACC-0002,Mateo Henriksen,Payroll Specialist,User,mateo.henriksen@halcyon.com,2026-02-25,2026-01-09
+CON-00009,ACC-0003,Lars Costa,IT Manager,Technical,lars.costa@fjord.com,2026-02-04,2025-12-29
+CON-00010,ACC-0003,Pieter Bauer,Finance Manager,Influencer,pieter.bauer@fjord.com,2026-03-07,2025-02-13
+CON-00011,ACC-0003,Hannah Dvořák,HR Director,Champion,hannah.dvořák@fjord.com,2026-03-04,2025-03-04
+CON-00012,ACC-0003,Sofia Lambert,Head of IT,Technical,sofia.lambert@fjord.com,2026-02-06,2025-02-14
+CON-00013,ACC-0003,Sofia Henriksen,IT Manager,Technical,sofia.henriksen@fjord.com,2026-02-16,2025-04-30
+CON-00014,ACC-0003,Stefan Werner,Payroll Specialist,User,stefan.werner@fjord.com,2026-01-26,2025-10-26
+CON-00015,ACC-0003,Anna Ferreira,IT Manager,Technical,anna.ferreira@fjord.com,2025-12-29,2025-10-12
+CON-00016,ACC-0004,Hannah Bauer,Payroll Specialist,User,hannah.bauer@norden.com,2026-02-17,2025-05-14
+CON-00017,ACC-0004,Camille Schmidt,Head of IT,Technical,camille.schmidt@norden.com,2026-04-29,2025-05-29
+CON-00018,ACC-0004,Elena Jung,COO,Economic Buyer,elena.jung@norden.com,2026-01-27,2025-06-04
+CON-00019,ACC-0004,Andreas Iversen,VP People,Champion,andreas.iversen@norden.com,2025-12-14,2025-04-20
+CON-00020,ACC-0004,Liesl Müller,Head of IT,Technical,liesl.müller@norden.com,2026-05-06,2025-11-09
+CON-00021,ACC-0004,Saskia Krause,Finance Manager,Influencer,saskia.krause@norden.com,2026-04-29,2025-11-25
+CON-00022,ACC-0004,Leonie Lefèvre,Managing Director,Economic Buyer,leonie.lefèvre@norden.com,2026-03-12,2025-02-24
+CON-00023,ACC-0005,Nora Iversen,CFO,Economic Buyer,nora.iversen@forge.com,2026-02-27,2025-02-25
+CON-00024,ACC-0005,Marco Vogel,COO,Economic Buyer,marco.vogel@forge.com,2026-01-02,2025-09-12
+CON-00025,ACC-0005,Liesl Mancini,IT Manager,Technical,liesl.mancini@forge.com,2026-01-17,2025-01-25
+CON-00026,ACC-0005,Sofia Vogel,Managing Director,Economic Buyer,sofia.vogel@forge.com,2026-03-31,2025-10-20
+CON-00027,ACC-0005,Elena Zimmer,HR Director,Champion,elena.zimmer@forge.com,2026-02-05,2025-04-08
+CON-00028,ACC-0006,Saskia Grimaldi,IT Manager,Technical,saskia.grimaldi@umbra.com,2026-04-01,2026-02-19
+CON-00029,ACC-0006,Bastian Krause,People Partner,User,bastian.krause@umbra.com,2026-03-30,2025-08-30
+CON-00030,ACC-0006,Søren Lindqvist,Operations Manager,Influencer,soren.lindqvist@umbra.com,2026-03-08,2026-01-01
+CON-00031,ACC-0006,Maxime O'Connor,Finance Manager,Influencer,maxime.o'connor@umbra.com,2026-01-15,2025-04-16
+CON-00032,ACC-0006,Karim Krause,People Operations Lead,Champion,karim.krause@umbra.com,2026-03-14,2026-02-05
+CON-00033,ACC-0006,Thomas Grimaldi,Operations Manager,Influencer,thomas.grimaldi@umbra.com,2025-12-29,2025-11-08
+CON-00034,ACC-0007,Thomas Schmidt,CFO,Economic Buyer,thomas.schmidt@tide.com,2026-03-05,2025-11-17
+CON-00035,ACC-0007,Jonas Hofer,HR Director,Champion,jonas.hofer@tide.com,2026-03-18,2025-03-10
+CON-00036,ACC-0007,Henrik Schmidt,CEO,Economic Buyer,henrik.schmidt@tide.com,2025-12-31,2025-11-24
+CON-00037,ACC-0007,Yara Tanaka,Head of People,Champion,yara.tanaka@tide.com,2026-01-29,2025-12-10
+CON-00038,ACC-0007,Elena Lindqvist,Head of IT,Technical,elena.lindqvist@tide.com,2026-03-26,2025-12-18
+CON-00039,ACC-0008,Marta Mancini,CFO,Economic Buyer,marta.mancini@harbor.com,2025-12-04,2025-04-02
+CON-00040,ACC-0008,Liesl Costa,CFO,Economic Buyer,liesl.costa@harbor.com,2026-05-05,2025-09-05
+CON-00041,ACC-0009,Charlotte Andersen,Managing Director,Economic Buyer,charlotte.andersen@meridian.com,2026-03-28,2026-02-10
+CON-00042,ACC-0009,Elena Andersen,Payroll Specialist,User,elena.andersen@meridian.com,2026-01-17,2025-04-29
+CON-00043,ACC-0009,Ravi Henriksen,Operations Manager,Influencer,ravi.henriksen@meridian.com,2026-01-12,2025-02-02
+CON-00044,ACC-0010,Jonas Lopez,Payroll Specialist,User,jonas.lopez@cobalt.com,2026-02-26,2025-09-01
+CON-00045,ACC-0010,Mateo Karlsson,HRBP,User,mateo.karlsson@cobalt.com,2026-02-15,2025-08-30
+CON-00046,ACC-0010,Marco Costa,People Partner,User,marco.costa@cobalt.com,2026-01-18,2025-04-05
+CON-00047,ACC-0011,Eva Andersen,Head of People,Champion,eva.andersen@tide.com,2026-03-07,2025-07-12
+CON-00048,ACC-0011,Karim Costa,Systems Administrator,Technical,karim.costa@tide.com,2026-03-14,2025-06-23
+CON-00049,ACC-0011,Sofia Lopez,CFO,Economic Buyer,sofia.lopez@tide.com,2026-01-26,2025-01-24
+CON-00050,ACC-0011,Sofia Ramos,VP People,Champion,sofia.ramos@tide.com,2026-05-10,2025-09-20
+CON-00051,ACC-0012,Mia Lindqvist,People Partner,User,mia.lindqvist@vela.com,2025-12-19,2025-07-19
+CON-00052,ACC-0012,Mia Janssen,People Operations Lead,Champion,mia.janssen@vela.com,2026-01-04,2025-10-28
+CON-00053,ACC-0012,Eva Ferreira,Operations Manager,Influencer,eva.ferreira@vela.com,2026-01-23,2025-05-03
+CON-00054,ACC-0012,Liesl Müller,Head of People,Champion,liesl.müller@vela.com,2026-04-14,2026-02-24
+CON-00055,ACC-0012,Liesl Esposito,IT Manager,Technical,liesl.esposito@vela.com,2026-04-08,2025-06-12
+CON-00056,ACC-0013,Sofia Hofer,Operations Manager,Influencer,sofia.hofer@elm.com,2026-04-26,2025-11-25
+CON-00057,ACC-0013,Liesl Romano,CFO,Economic Buyer,liesl.romano@elm.com,2025-12-12,2025-07-03
+CON-00058,ACC-0013,Thomas Tanaka,VP People,Champion,thomas.tanaka@elm.com,2026-02-21,2025-05-27
+CON-00059,ACC-0013,Ines Dvořák,HR Manager,User,ines.dvořák@elm.com,2026-01-31,2025-06-13
+CON-00060,ACC-0014,Sofia Lefèvre,COO,Economic Buyer,sofia.lefèvre@cinder.com,2026-05-28,2025-12-07
+CON-00061,ACC-0014,Jonas Zimmer,HR Director,Champion,jonas.zimmer@cinder.com,2026-02-28,2025-12-22
+CON-00062,ACC-0014,Karim Esposito,CEO,Economic Buyer,karim.esposito@cinder.com,2026-02-04,2025-08-09
+CON-00063,ACC-0014,Marta Lindqvist,Operations Manager,Influencer,marta.lindqvist@cinder.com,2026-05-13,2025-05-19
+CON-00064,ACC-0015,Elena Jung,Head of People,Champion,elena.jung@wren.com,2025-12-22,2025-04-18
+CON-00065,ACC-0015,Yara Iversen,HRBP,User,yara.iversen@wren.com,2026-05-22,2025-06-02
+CON-00066,ACC-0016,Marco Fischer,People Operations Lead,Champion,marco.fischer@forge.com,2026-05-27,2026-03-25
+CON-00067,ACC-0016,Eva Dvořák,Finance Manager,Influencer,eva.dvořák@forge.com,2026-04-06,2025-06-01
+CON-00068,ACC-0016,Stefan Lindqvist,Systems Administrator,Technical,stefan.lindqvist@forge.com,2026-03-30,2025-03-11
+CON-00069,ACC-0017,Thomas Jung,Finance Manager,Influencer,thomas.jung@quartz.com,2026-05-12,2025-08-31
+CON-00070,ACC-0017,Mateo Werner,VP People,Champion,mateo.werner@quartz.com,2026-02-17,2025-05-28
+CON-00071,ACC-0018,Lars Andersen,Managing Director,Economic Buyer,lars.andersen@meridian.com,2026-03-29,2025-03-17
+CON-00072,ACC-0018,Thomas Jung,Finance Manager,Influencer,thomas.jung@meridian.com,2025-12-30,2025-02-12
+CON-00073,ACC-0018,Henrik Lefèvre,COO,Economic Buyer,henrik.lefèvre@meridian.com,2026-04-25,2025-11-16
+CON-00074,ACC-0019,Mia Dvořák,CEO,Economic Buyer,mia.dvořák@verdant.com,2026-04-29,2026-01-24
+CON-00075,ACC-0019,Hannah Quintero,Head of People,Champion,hannah.quintero@verdant.com,2026-01-11,2025-02-20
+CON-00076,ACC-0019,Niko Werner,HR Manager,User,niko.werner@verdant.com,2026-05-10,2025-07-08
+CON-00077,ACC-0019,Mateo Dahl,Head of IT,Technical,mateo.dahl@verdant.com,2025-12-14,2025-09-12
+CON-00078,ACC-0020,Saskia Costa,Managing Director,Economic Buyer,saskia.costa@vault.com,2025-12-16,2025-05-04
+CON-00079,ACC-0020,Ravi Sørensen,Systems Administrator,Technical,ravi.sorensen@vault.com,2026-03-02,2025-05-10
+CON-00080,ACC-0020,Beatriz Berger,People Operations Lead,Champion,beatriz.berger@vault.com,2026-01-01,2025-08-17
+CON-00081,ACC-0020,Felix Zimmer,Finance Manager,Influencer,felix.zimmer@vault.com,2026-04-27,2025-08-15
+CON-00082,ACC-0021,Mateo O'Connor,HRBP,User,mateo.o'connor@kestrel.com,2026-01-28,2025-09-14
+CON-00083,ACC-0021,Mateo Novák,Systems Administrator,Technical,mateo.novák@kestrel.com,2026-01-22,2025-10-29
+CON-00084,ACC-0021,Charlotte Petersen,People Partner,User,charlotte.petersen@kestrel.com,2026-05-05,2026-02-18
+CON-00085,ACC-0021,Saskia Mancini,HR Director,Champion,saskia.mancini@kestrel.com,2026-02-28,2025-06-06
+CON-00086,ACC-0022,Niko Romano,Systems Administrator,Technical,niko.romano@wren.com,2026-01-09,2025-01-01
+CON-00087,ACC-0022,Karim Costa,Finance Manager,Influencer,karim.costa@wren.com,2026-05-08,2025-07-11
+CON-00088,ACC-0022,Maxime Grimaldi,VP People,Champion,maxime.grimaldi@wren.com,2026-01-09,2025-05-13
+CON-00089,ACC-0022,Oliver Petersen,Finance Manager,Influencer,oliver.petersen@wren.com,2026-05-30,2026-04-17
+CON-00090,ACC-0023,Thomas Bauer,IT Manager,Technical,thomas.bauer@nimbus.com,2026-02-08,2025-07-24
+CON-00091,ACC-0023,Hannah Lindqvist,Systems Administrator,Technical,hannah.lindqvist@nimbus.com,2026-01-03,2025-08-06
+CON-00092,ACC-0023,Mateo Hofer,Systems Administrator,Technical,mateo.hofer@nimbus.com,2026-04-24,2025-11-13
+CON-00093,ACC-0024,Thomas Ferreira,HR Manager,User,thomas.ferreira@pivot.com,2026-01-07,2025-08-14
+CON-00094,ACC-0024,Andreas Quintero,HR Director,Champion,andreas.quintero@pivot.com,2026-05-05,2026-01-11
+CON-00095,ACC-0024,Andreas Krause,COO,Economic Buyer,andreas.krause@pivot.com,2025-12-21,2024-12-29
+CON-00096,ACC-0024,Jonas Janssen,People Operations Lead,Champion,jonas.janssen@pivot.com,2025-12-28,2025-08-17
+CON-00097,ACC-0024,Felix Iversen,People Operations Lead,Champion,felix.iversen@pivot.com,2026-02-15,2025-08-23
+CON-00098,ACC-0025,Nora Zimmer,Head of People,Champion,nora.zimmer@quill.com,2026-02-24,2025-08-31
+CON-00099,ACC-0025,Liesl Ramos,Operations Manager,Influencer,liesl.ramos@quill.com,2026-03-08,2025-06-04
+CON-00100,ACC-0025,Marco Ramos,HR Manager,User,marco.ramos@quill.com,2026-05-05,2025-07-22
+CON-00101,ACC-0025,Marta Dahl,COO,Economic Buyer,marta.dahl@quill.com,2026-05-21,2025-12-07
+CON-00102,ACC-0025,Marco Tanaka,Systems Administrator,Technical,marco.tanaka@quill.com,2026-05-13,2026-01-31
+CON-00103,ACC-0026,Stefan Iversen,HR Manager,User,stefan.iversen@verdant.com,2026-01-26,2025-05-14
+CON-00104,ACC-0026,Eva Romano,Finance Manager,Influencer,eva.romano@verdant.com,2026-03-12,2025-11-29
+CON-00105,ACC-0026,Ines Tanaka,CEO,Economic Buyer,ines.tanaka@verdant.com,2026-01-15,2025-04-24
+CON-00106,ACC-0026,Saskia Dvořák,HR Director,Champion,saskia.dvořák@verdant.com,2026-04-23,2026-03-04
+CON-00107,ACC-0027,Leonie Schmidt,Operations Manager,Influencer,leonie.schmidt@wren.com,2026-04-05,2026-02-09
+CON-00108,ACC-0027,Stefan Henriksen,Finance Manager,Influencer,stefan.henriksen@wren.com,2025-12-19,2024-11-15
+CON-00109,ACC-0027,Maxime Petersen,People Operations Lead,Champion,maxime.petersen@wren.com,2026-04-19,2025-03-27
+CON-00110,ACC-0027,Liesl Henriksen,Managing Director,Economic Buyer,liesl.henriksen@wren.com,2026-04-15,2025-04-27
+CON-00111,ACC-0028,Sofia Lopez,Systems Administrator,Technical,sofia.lopez@lark.com,2026-05-12,2026-03-19
+CON-00112,ACC-0028,Daan Costa,HR Manager,User,daan.costa@lark.com,2026-05-27,2025-04-24
+CON-00113,ACC-0028,Beatriz Dahl,Operations Manager,Influencer,beatriz.dahl@lark.com,2026-02-10,2025-09-30
+CON-00114,ACC-0029,Søren Vogel,CEO,Economic Buyer,soren.vogel@gale.com,2025-12-25,2025-01-14
+CON-00115,ACC-0029,Lars Petersen,CEO,Economic Buyer,lars.petersen@gale.com,2025-12-29,2025-02-09
+CON-00116,ACC-0030,Niko O'Connor,Head of IT,Technical,niko.o'connor@iris.com,2026-01-08,2024-12-10
+CON-00117,ACC-0030,Anna Berger,Finance Manager,Influencer,anna.berger@iris.com,2025-12-09,2025-05-12
+CON-00118,ACC-0030,Anna Petersen,COO,Economic Buyer,anna.petersen@iris.com,2025-12-25,2025-05-14
+CON-00119,ACC-0030,Elena Quintero,IT Manager,Technical,elena.quintero@iris.com,2026-05-21,2026-04-21
+CON-00120,ACC-0030,Elena Tanaka,IT Manager,Technical,elena.tanaka@iris.com,2026-02-23,2025-02-03
+CON-00121,ACC-0030,Felix Lambert,Systems Administrator,Technical,felix.lambert@iris.com,2026-05-13,2026-02-11
+CON-00122,ACC-0030,Liesl Fischer,Managing Director,Economic Buyer,liesl.fischer@iris.com,2026-05-11,2026-03-06
+CON-00123,ACC-0031,Camille Ramos,Finance Manager,Influencer,camille.ramos@echo.com,2026-03-27,2026-01-25
+CON-00124,ACC-0031,Niko Henriksen,HR Director,Champion,niko.henriksen@echo.com,2026-03-24,2025-11-19
+CON-00125,ACC-0031,Oliver Tanaka,IT Manager,Technical,oliver.tanaka@echo.com,2026-02-22,2025-05-15
+CON-00126,ACC-0031,Greta Ferreira,COO,Economic Buyer,greta.ferreira@echo.com,2026-04-05,2026-02-10
+CON-00127,ACC-0032,Maxime Iversen,Managing Director,Economic Buyer,maxime.iversen@northwind.com,2025-12-29,2025-03-08
+CON-00128,ACC-0032,Saskia Lindqvist,Operations Manager,Influencer,saskia.lindqvist@northwind.com,2026-03-02,2025-11-25
+CON-00129,ACC-0032,Thomas Müller,Systems Administrator,Technical,thomas.müller@northwind.com,2026-02-23,2025-02-07
+CON-00130,ACC-0033,Oliver Quintero,People Operations Lead,Champion,oliver.quintero@onyx.com,2026-03-24,2025-04-11
+CON-00131,ACC-0033,Ines Esposito,Finance Manager,Influencer,ines.esposito@onyx.com,2025-12-18,2025-05-04
+CON-00132,ACC-0033,Lars Esposito,Payroll Specialist,User,lars.esposito@onyx.com,2026-03-29,2025-09-21
+CON-00133,ACC-0033,Andreas Mancini,COO,Economic Buyer,andreas.mancini@onyx.com,2026-04-30,2025-11-19
+CON-00134,ACC-0034,Daan Dvořák,People Partner,User,daan.dvořák@kestrel.com,2025-12-15,2025-08-22
+CON-00135,ACC-0034,Henrik Dvořák,Operations Manager,Influencer,henrik.dvořák@kestrel.com,2026-02-02,2025-05-04
+CON-00136,ACC-0034,Karim Vogel,Payroll Specialist,User,karim.vogel@kestrel.com,2026-01-31,2025-05-20
+CON-00137,ACC-0034,Sofia Vogel,Managing Director,Economic Buyer,sofia.vogel@kestrel.com,2026-01-02,2025-04-07
+CON-00138,ACC-0035,Charlotte Krause,HR Manager,User,charlotte.krause@ember.com,2026-03-19,2025-12-14
+CON-00139,ACC-0035,Anna Ferreira,HR Director,Champion,anna.ferreira@ember.com,2026-04-30,2026-01-13
+CON-00140,ACC-0035,Søren Sørensen,CEO,Economic Buyer,soren.sorensen@ember.com,2026-03-02,2025-08-09
+CON-00141,ACC-0036,Pieter Karlsson,CFO,Economic Buyer,pieter.karlsson@kestrel.com,2026-04-16,2025-09-30
+CON-00142,ACC-0036,Hannah Schmidt,VP People,Champion,hannah.schmidt@kestrel.com,2026-03-29,2025-04-10
+CON-00143,ACC-0036,Beatriz Jung,Head of IT,Technical,beatriz.jung@kestrel.com,2026-01-12,2025-07-29
+CON-00144,ACC-0036,Mateo Petersen,CFO,Economic Buyer,mateo.petersen@kestrel.com,2026-02-14,2025-10-26
+CON-00145,ACC-0036,Hannah Ferreira,HRBP,User,hannah.ferreira@kestrel.com,2026-02-25,2025-05-31
+CON-00146,ACC-0036,Bastian Karlsson,COO,Economic Buyer,bastian.karlsson@kestrel.com,2026-04-27,2025-10-18
+CON-00147,ACC-0036,Pieter Werner,HR Director,Champion,pieter.werner@kestrel.com,2026-03-31,2026-02-16
+CON-00148,ACC-0037,Elena Werner,HR Director,Champion,elena.werner@bastion.com,2026-05-17,2025-11-03
+CON-00149,ACC-0037,Marta Müller,Finance Manager,Influencer,marta.müller@bastion.com,2026-01-21,2025-08-02
+CON-00150,ACC-0037,Eva Grimaldi,Head of People,Champion,eva.grimaldi@bastion.com,2026-03-23,2025-11-13
+CON-00151,ACC-0037,Felix Costa,Managing Director,Economic Buyer,felix.costa@bastion.com,2026-03-05,2025-05-12
+CON-00152,ACC-0037,Maxime Ramos,Payroll Specialist,User,maxime.ramos@bastion.com,2026-01-19,2025-07-20
+CON-00153,ACC-0038,Camille Sørensen,People Operations Lead,Champion,camille.sorensen@mosaic.com,2026-04-10,2026-02-22
+CON-00154,ACC-0038,Maxime Lopez,CEO,Economic Buyer,maxime.lopez@mosaic.com,2026-03-15,2025-05-16
+CON-00155,ACC-0038,Jonas Ramos,Head of IT,Technical,jonas.ramos@mosaic.com,2026-01-19,2025-12-01
+CON-00156,ACC-0039,Niko Janssen,Finance Manager,Influencer,niko.janssen@fjell.com,2026-04-18,2025-11-15
+CON-00157,ACC-0039,Pieter Werner,CFO,Economic Buyer,pieter.werner@fjell.com,2026-04-22,2025-11-15
+CON-00158,ACC-0039,Daan O'Connor,VP People,Champion,daan.o'connor@fjell.com,2026-05-22,2026-01-17
+CON-00159,ACC-0040,Andreas Lindqvist,People Partner,User,andreas.lindqvist@aurora.com,2025-12-10,2025-03-29
+CON-00160,ACC-0040,Greta Costa,Systems Administrator,Technical,greta.costa@aurora.com,2026-05-15,2026-04-01
+CON-00161,ACC-0040,Felix O'Connor,Finance Manager,Influencer,felix.o'connor@aurora.com,2026-01-30,2025-10-27
+CON-00162,ACC-0040,Søren Lefèvre,Head of IT,Technical,soren.lefèvre@aurora.com,2026-03-10,2025-11-15
+CON-00163,ACC-0041,Liesl Müller,HRBP,User,liesl.müller@crescent.com,2025-12-18,2025-02-14
+CON-00164,ACC-0041,Hannah Hofer,VP People,Champion,hannah.hofer@crescent.com,2025-12-25,2025-07-07
+CON-00165,ACC-0041,Saskia Petersen,CFO,Economic Buyer,saskia.petersen@crescent.com,2025-12-27,2025-04-26
+CON-00166,ACC-0041,Hannah Tanaka,IT Manager,Technical,hannah.tanaka@crescent.com,2026-05-11,2025-04-10
+CON-00167,ACC-0041,Beatriz Lindqvist,HRBP,User,beatriz.lindqvist@crescent.com,2026-01-30,2024-12-27
+CON-00168,ACC-0041,Niko Fischer,CFO,Economic Buyer,niko.fischer@crescent.com,2026-02-12,2025-11-22
+CON-00169,ACC-0042,Mateo Dahl,Finance Manager,Influencer,mateo.dahl@ember.com,2026-05-06,2025-05-02
+CON-00170,ACC-0042,Nora Müller,Operations Manager,Influencer,nora.müller@ember.com,2026-03-16,2025-09-10
+CON-00171,ACC-0042,Saskia Bauer,Payroll Specialist,User,saskia.bauer@ember.com,2025-12-28,2025-10-07
+CON-00172,ACC-0042,Niko Ramos,Head of IT,Technical,niko.ramos@ember.com,2026-02-15,2025-08-18
+CON-00173,ACC-0043,Eva Schmidt,IT Manager,Technical,eva.schmidt@crescent.com,2025-12-14,2025-06-17
+CON-00174,ACC-0043,Jonas Bauer,CFO,Economic Buyer,jonas.bauer@crescent.com,2025-12-04,2025-02-23
+CON-00175,ACC-0043,Daan Schmidt,Head of IT,Technical,daan.schmidt@crescent.com,2026-02-17,2026-01-13
+CON-00176,ACC-0043,Anna O'Connor,Operations Manager,Influencer,anna.o'connor@crescent.com,2026-05-25,2025-05-02
+CON-00177,ACC-0043,Sofia Bauer,Operations Manager,Influencer,sofia.bauer@crescent.com,2026-04-12,2025-11-16
+CON-00178,ACC-0044,Anna Romano,People Operations Lead,Champion,anna.romano@northwind.com,2026-01-11,2024-12-18
+CON-00179,ACC-0044,Anna Jung,People Partner,User,anna.jung@northwind.com,2026-01-15,2025-01-29
+CON-00180,ACC-0044,Andreas Bauer,Head of IT,Technical,andreas.bauer@northwind.com,2026-05-17,2025-09-01
+CON-00181,ACC-0044,Ines Karlsson,Finance Manager,Influencer,ines.karlsson@northwind.com,2025-12-10,2025-07-29
+CON-00182,ACC-0045,Bastian Janssen,CFO,Economic Buyer,bastian.janssen@helix.com,2026-03-03,2025-09-29
+CON-00183,ACC-0045,Lars Dvořák,IT Manager,Technical,lars.dvořák@helix.com,2025-12-20,2025-10-09
+CON-00184,ACC-0045,Henrik Dahl,Head of IT,Technical,henrik.dahl@helix.com,2026-02-22,2025-04-01
+CON-00185,ACC-0045,Beatriz Esposito,People Partner,User,beatriz.esposito@helix.com,2026-01-23,2025-07-05
+CON-00186,ACC-0045,Eva Henriksen,CEO,Economic Buyer,eva.henriksen@helix.com,2025-12-05,2025-06-19
+CON-00187,ACC-0046,Stefan Werner,Systems Administrator,Technical,stefan.werner@quartz.com,2026-05-17,2025-11-15
+CON-00188,ACC-0046,Liesl Lopez,COO,Economic Buyer,liesl.lopez@quartz.com,2026-01-06,2025-05-08
+CON-00189,ACC-0047,Daan Novák,Payroll Specialist,User,daan.novák@stellar.com,2026-02-11,2025-10-08
+CON-00190,ACC-0047,Anna Zimmer,Operations Manager,Influencer,anna.zimmer@stellar.com,2025-12-23,2025-10-03
+CON-00191,ACC-0047,Greta Berger,HR Director,Champion,greta.berger@stellar.com,2026-01-05,2025-02-25
+CON-00192,ACC-0047,Camille Ramos,Head of IT,Technical,camille.ramos@stellar.com,2026-02-25,2025-12-08
+CON-00193,ACC-0048,Daan O'Connor,People Partner,User,daan.o'connor@nimbus.com,2025-12-07,2024-11-11
+CON-00194,ACC-0048,Marco Lambert,CFO,Economic Buyer,marco.lambert@nimbus.com,2026-01-21,2025-12-06
+CON-00195,ACC-0048,Felix Hofer,VP People,Champion,felix.hofer@nimbus.com,2026-04-26,2025-08-17
+CON-00196,ACC-0048,Jonas Petersen,HR Director,Champion,jonas.petersen@nimbus.com,2025-12-27,2024-12-26
+CON-00197,ACC-0048,Saskia Ramos,Head of IT,Technical,saskia.ramos@nimbus.com,2026-05-01,2025-09-17
+CON-00198,ACC-0049,Niko Costa,HRBP,User,niko.costa@ridge.com,2025-12-21,2024-11-25
+CON-00199,ACC-0049,Anna Dahl,VP People,Champion,anna.dahl@ridge.com,2026-05-30,2025-11-20
+CON-00200,ACC-0049,Mia Ferreira,Managing Director,Economic Buyer,mia.ferreira@ridge.com,2025-12-24,2024-11-19
+CON-00201,ACC-0049,Stefan Hofer,CFO,Economic Buyer,stefan.hofer@ridge.com,2026-03-23,2025-11-04
+CON-00202,ACC-0050,Søren Karlsson,IT Manager,Technical,soren.karlsson@rune.com,2026-03-12,2025-04-18
+CON-00203,ACC-0050,Pieter Sørensen,COO,Economic Buyer,pieter.sorensen@rune.com,2026-04-05,2025-09-04
+CON-00204,ACC-0050,Yara Lopez,Head of People,Champion,yara.lopez@rune.com,2026-03-18,2026-01-21
+CON-00205,ACC-0050,Ines Schmidt,HR Manager,User,ines.schmidt@rune.com,2026-01-15,2025-06-30
+CON-00206,ACC-0050,Greta Ramos,CFO,Economic Buyer,greta.ramos@rune.com,2026-01-29,2025-02-04
+CON-00207,ACC-0051,Ines Bauer,CFO,Economic Buyer,ines.bauer@harbor.com,2026-05-21,2026-03-01
+CON-00208,ACC-0051,Camille Bauer,HRBP,User,camille.bauer@harbor.com,2026-03-20,2025-09-27
+CON-00209,ACC-0051,Bastian Dahl,HRBP,User,bastian.dahl@harbor.com,2026-01-26,2025-05-08
+CON-00210,ACC-0052,Charlotte Lefèvre,People Partner,User,charlotte.lefèvre@vault.com,2026-03-06,2025-07-30
+CON-00211,ACC-0052,Elena Berger,Operations Manager,Influencer,elena.berger@vault.com,2026-03-31,2025-09-23
+CON-00212,ACC-0052,Stefan Lambert,CFO,Economic Buyer,stefan.lambert@vault.com,2026-03-30,2025-09-08
+CON-00213,ACC-0052,Yara Müller,CEO,Economic Buyer,yara.müller@vault.com,2026-03-30,2025-11-28
+CON-00214,ACC-0052,Andreas O'Connor,IT Manager,Technical,andreas.o'connor@vault.com,2026-03-27,2025-05-02
+CON-00215,ACC-0053,Stefan Romano,Systems Administrator,Technical,stefan.romano@helix.com,2026-03-18,2025-08-18
+CON-00216,ACC-0053,Oliver O'Connor,IT Manager,Technical,oliver.o'connor@helix.com,2026-02-16,2025-08-04
+CON-00217,ACC-0053,Elena Grimaldi,Managing Director,Economic Buyer,elena.grimaldi@helix.com,2026-02-17,2025-01-21
+CON-00218,ACC-0053,Karim Vogel,Managing Director,Economic Buyer,karim.vogel@helix.com,2026-01-28,2025-05-26
+CON-00219,ACC-0054,Henrik Novák,CEO,Economic Buyer,henrik.novák@verdant.com,2026-01-25,2025-12-18
+CON-00220,ACC-0054,Nora Lefèvre,People Partner,User,nora.lefèvre@verdant.com,2026-04-19,2025-11-03
+CON-00221,ACC-0054,Jonas Werner,Managing Director,Economic Buyer,jonas.werner@verdant.com,2026-05-29,2026-03-11
+CON-00222,ACC-0054,Leonie Vogel,People Partner,User,leonie.vogel@verdant.com,2026-04-26,2025-06-19
+CON-00223,ACC-0055,Ravi Schmidt,HR Director,Champion,ravi.schmidt@delta.com,2026-01-30,2025-01-05
+CON-00224,ACC-0055,Karim Petersen,People Operations Lead,Champion,karim.petersen@delta.com,2026-01-14,2025-07-22
+CON-00225,ACC-0055,Pieter Grimaldi,CFO,Economic Buyer,pieter.grimaldi@delta.com,2026-02-03,2025-02-01
+CON-00226,ACC-0056,Greta Tanaka,VP People,Champion,greta.tanaka@delta.com,2026-02-20,2026-01-21
+CON-00227,ACC-0056,Karim Schmidt,Finance Manager,Influencer,karim.schmidt@delta.com,2026-04-23,2025-07-06
+CON-00228,ACC-0056,Charlotte Tanaka,Head of IT,Technical,charlotte.tanaka@delta.com,2026-05-03,2025-10-01
+CON-00229,ACC-0056,Hannah Lopez,VP People,Champion,hannah.lopez@delta.com,2026-03-20,2026-01-31
+CON-00230,ACC-0057,Karim Novák,Finance Manager,Influencer,karim.novák@juniper.com,2026-02-03,2025-08-04
+CON-00231,ACC-0057,Pieter Vogel,HR Manager,User,pieter.vogel@juniper.com,2026-05-12,2025-08-06
+CON-00232,ACC-0057,Søren Iversen,VP People,Champion,soren.iversen@juniper.com,2025-12-20,2024-12-24
+CON-00233,ACC-0058,Thomas Quintero,CEO,Economic Buyer,thomas.quintero@delta.com,2026-01-02,2025-05-29
+CON-00234,ACC-0058,Marco Ramos,Head of People,Champion,marco.ramos@delta.com,2026-03-06,2025-05-21
+CON-00235,ACC-0059,Camille Hofer,Finance Manager,Influencer,camille.hofer@vault.com,2026-02-21,2025-05-25
+CON-00236,ACC-0059,Ines Fischer,CFO,Economic Buyer,ines.fischer@vault.com,2026-02-20,2025-10-14
+CON-00237,ACC-0060,Henrik Tanaka,HRBP,User,henrik.tanaka@vela.com,2026-04-14,2025-06-06
+CON-00238,ACC-0060,Beatriz Jung,IT Manager,Technical,beatriz.jung@vela.com,2026-01-19,2025-11-09
+CON-00239,ACC-0060,Pieter Zimmer,People Operations Lead,Champion,pieter.zimmer@vela.com,2026-04-17,2026-02-11
+CON-00240,ACC-0060,Yara O'Connor,People Operations Lead,Champion,yara.o'connor@vela.com,2026-05-15,2025-11-06
+CON-00241,ACC-0060,Yara Janssen,Managing Director,Economic Buyer,yara.janssen@vela.com,2026-02-04,2025-09-30
+CON-00242,ACC-0061,Anna Fischer,COO,Economic Buyer,anna.fischer@willow.com,2026-01-21,2025-11-18
+CON-00243,ACC-0061,Yara O'Connor,HR Director,Champion,yara.o'connor@willow.com,2025-12-27,2025-09-03
+CON-00244,ACC-0061,Niko Schmidt,People Partner,User,niko.schmidt@willow.com,2026-02-14,2025-12-16
+CON-00245,ACC-0061,Thomas Ramos,Head of People,Champion,thomas.ramos@willow.com,2026-05-26,2026-02-25
+CON-00246,ACC-0062,Sofia Sørensen,IT Manager,Technical,sofia.sorensen@lattice.com,2026-02-09,2025-05-07
+CON-00247,ACC-0062,Beatriz Müller,VP People,Champion,beatriz.müller@lattice.com,2026-01-10,2025-03-10
+CON-00248,ACC-0063,Søren Novák,Payroll Specialist,User,soren.novák@anvil.com,2026-03-31,2025-11-05
+CON-00249,ACC-0063,Ines Hofer,HRBP,User,ines.hofer@anvil.com,2026-03-16,2025-06-01
+CON-00250,ACC-0063,Liesl Ramos,Head of IT,Technical,liesl.ramos@anvil.com,2026-01-16,2025-10-10
+CON-00251,ACC-0063,Henrik Novák,HR Director,Champion,henrik.novák@anvil.com,2026-04-18,2025-04-15
+CON-00252,ACC-0064,Søren Lindqvist,Head of People,Champion,soren.lindqvist@vector.com,2026-05-21,2025-11-05
+CON-00253,ACC-0064,Andreas Ferreira,Operations Manager,Influencer,andreas.ferreira@vector.com,2026-02-07,2025-02-01
+CON-00254,ACC-0064,Karim Lambert,IT Manager,Technical,karim.lambert@vector.com,2026-05-12,2025-11-17
+CON-00255,ACC-0065,Camille Hofer,VP People,Champion,camille.hofer@tide.com,2025-12-23,2025-05-08
+CON-00256,ACC-0065,Daan Werner,CEO,Economic Buyer,daan.werner@tide.com,2026-05-02,2025-06-24
+CON-00257,ACC-0065,Ines Andersen,COO,Economic Buyer,ines.andersen@tide.com,2026-02-11,2025-06-28
+CON-00258,ACC-0066,Bastian Petersen,Managing Director,Economic Buyer,bastian.petersen@tide.com,2026-02-12,2025-10-31
+CON-00259,ACC-0066,Karim Lindqvist,IT Manager,Technical,karim.lindqvist@tide.com,2026-03-12,2026-01-22
+CON-00260,ACC-0066,Saskia Andersen,Head of People,Champion,saskia.andersen@tide.com,2026-01-03,2025-01-03
+CON-00261,ACC-0066,Leonie Ramos,HR Director,Champion,leonie.ramos@tide.com,2025-12-10,2025-07-09
+CON-00262,ACC-0066,Maxime Mancini,HR Director,Champion,maxime.mancini@tide.com,2026-04-02,2025-03-14
+CON-00263,ACC-0066,Ines Müller,HR Manager,User,ines.müller@tide.com,2026-05-20,2025-11-06
+CON-00264,ACC-0066,Mia Novák,Head of IT,Technical,mia.novák@tide.com,2026-03-26,2025-12-12
+CON-00265,ACC-0067,Mia Müller,People Operations Lead,Champion,mia.müller@noble.com,2026-03-22,2025-07-31
+CON-00266,ACC-0067,Jonas Romano,Head of IT,Technical,jonas.romano@noble.com,2026-01-31,2025-07-14
+CON-00267,ACC-0067,Charlotte Karlsson,People Partner,User,charlotte.karlsson@noble.com,2025-12-20,2025-01-21
+CON-00268,ACC-0068,Ines Ramos,HR Manager,User,ines.ramos@lattice.com,2026-01-10,2025-08-23
+CON-00269,ACC-0068,Nora Henriksen,Systems Administrator,Technical,nora.henriksen@lattice.com,2025-12-16,2025-08-09
+CON-00270,ACC-0068,Hannah Ramos,Head of People,Champion,hannah.ramos@lattice.com,2026-04-13,2025-11-22
+CON-00271,ACC-0069,Jonas Karlsson,HR Manager,User,jonas.karlsson@sable.com,2026-02-06,2025-08-24
+CON-00272,ACC-0069,Liesl Fischer,Systems Administrator,Technical,liesl.fischer@sable.com,2026-01-26,2025-11-21
+CON-00273,ACC-0069,Stefan Petersen,CFO,Economic Buyer,stefan.petersen@sable.com,2026-02-03,2025-09-30
+CON-00274,ACC-0069,Mia Ferreira,Managing Director,Economic Buyer,mia.ferreira@sable.com,2026-03-21,2025-11-27
+CON-00275,ACC-0069,Saskia Novák,COO,Economic Buyer,saskia.novák@sable.com,2026-03-25,2025-06-08
+CON-00276,ACC-0069,Leonie Quintero,Finance Manager,Influencer,leonie.quintero@sable.com,2026-05-26,2025-05-23
+CON-00277,ACC-0069,Mia Hofer,Operations Manager,Influencer,mia.hofer@sable.com,2026-01-20,2025-06-22
+CON-00278,ACC-0070,Liesl Karlsson,Head of People,Champion,liesl.karlsson@wren.com,2025-12-23,2025-06-17
+CON-00279,ACC-0070,Elena Grimaldi,COO,Economic Buyer,elena.grimaldi@wren.com,2026-03-12,2025-03-26
+CON-00280,ACC-0070,Bastian Müller,CEO,Economic Buyer,bastian.müller@wren.com,2025-12-03,2024-11-07
+CON-00281,ACC-0070,Niko Dvořák,Managing Director,Economic Buyer,niko.dvořák@wren.com,2026-03-19,2025-09-12
+CON-00282,ACC-0071,Jonas Schmidt,CEO,Economic Buyer,jonas.schmidt@tide.com,2026-01-09,2025-06-23
+CON-00283,ACC-0071,Saskia Henriksen,People Operations Lead,Champion,saskia.henriksen@tide.com,2025-12-29,2024-12-19
+CON-00284,ACC-0071,Leonie Lambert,IT Manager,Technical,leonie.lambert@tide.com,2026-05-25,2025-11-24
+CON-00285,ACC-0071,Andreas Dahl,Finance Manager,Influencer,andreas.dahl@tide.com,2025-12-20,2025-04-10
+CON-00286,ACC-0072,Nora Henriksen,Operations Manager,Influencer,nora.henriksen@yonder.com,2026-01-30,2025-11-01
+CON-00287,ACC-0072,Yara Lefèvre,Head of IT,Technical,yara.lefèvre@yonder.com,2026-02-20,2025-12-14
+CON-00288,ACC-0072,Oliver Lambert,Operations Manager,Influencer,oliver.lambert@yonder.com,2026-04-15,2025-04-14
+CON-00289,ACC-0072,Daan Grimaldi,Payroll Specialist,User,daan.grimaldi@yonder.com,2026-05-29,2026-03-02
+CON-00290,ACC-0073,Camille Krause,Operations Manager,Influencer,camille.krause@vector.com,2026-03-10,2025-04-07
+CON-00291,ACC-0073,Søren Romano,Payroll Specialist,User,soren.romano@vector.com,2026-02-13,2025-05-29
+CON-00292,ACC-0073,Daan Vogel,Payroll Specialist,User,daan.vogel@vector.com,2026-04-02,2025-04-24
+CON-00293,ACC-0073,Charlotte Karlsson,IT Manager,Technical,charlotte.karlsson@vector.com,2026-05-03,2026-01-15
+CON-00294,ACC-0074,Henrik O'Connor,Operations Manager,Influencer,henrik.o'connor@helix.com,2026-04-16,2025-09-10
+CON-00295,ACC-0074,Stefan Zimmer,Payroll Specialist,User,stefan.zimmer@helix.com,2026-01-27,2025-04-24
+CON-00296,ACC-0074,Oliver Petersen,COO,Economic Buyer,oliver.petersen@helix.com,2026-01-23,2025-08-26
+CON-00297,ACC-0075,Anna Grimaldi,COO,Economic Buyer,anna.grimaldi@ivory.com,2026-04-28,2025-05-20
+CON-00298,ACC-0075,Karim O'Connor,CEO,Economic Buyer,karim.o'connor@ivory.com,2026-05-20,2025-09-19
+CON-00299,ACC-0075,Thomas Henriksen,People Partner,User,thomas.henriksen@ivory.com,2026-04-23,2025-03-21
