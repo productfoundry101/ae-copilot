@@ -9,6 +9,7 @@ __pycache__/
 
 # --- generated outputs not published -------------------------------------
 digests/
+test_conn.py
 
 # --- runtime data: published from 2026-07-11 onward -----------------------
 traces/2026-07-08.jsonl

@@ -252,3 +252,64 @@ Offering a 20% discount would require approval from the deal desk. Additionally,
 
 **Conclusion:**
 Both accounts are at risk due to significant usage declines and the absence of an Economic Buyer. However, Cobalt Manufacturing B.V. shows a steeper decline in usage and is also flagged as a quiet account, indicating a lack of recent engagement. This combination of factors suggests that Cobalt Manufacturing B.V. might be at a higher risk compared to Halcyon Hospitality Group."
+2026-07-15T16:39:24.294860,lena.koehler@personio.de,like,,"How many accounts do I have, broken down by status?","In your book (41 accounts total): 24 customers, 15 prospects, 2 churned [get_stats]."
+2026-07-15T16:44:52.441617,lena.koehler@personio.de,like,,Which of my accounts have no Economic Buyer mapped?,"In your book (41 accounts scanned), defining the signal as no contact with persona ""Economic Buyer"" on the account [scan_book_signals: no_economic_buyer]: 11 accounts flagged, all high severity.
+
+- ACC-0063 Anvil Education AG (prospect, SMB)
+- ACC-0001 Brightline Retail GmbH (customer, MM)
+- ACC-0010 Cobalt Manufacturing B.V. (customer, SMB)
+- ACC-0003 Fjord Logistics AS (prospect, ENT)
+- ACC-0016 Forge Logistics ApS (customer, MM)
+- ACC-0002 Halcyon Hospitality Group (customer, MM)
+- ACC-0021 Kestrel Holding B.V. (prospect, SMB)
+- ACC-0068 Lattice Professional AG (customer, SMB)
+- ACC-0062 Lattice Professional Services ApS (customer, SMB)
+- ACC-0023 Nimbus Solutions Ltd (customer, MM)
+- ACC-0017 Quartz Holding Ltd (customer, SMB)"
+2026-07-15T16:46:13.222310,lena.koehler@personio.de,like,,Which of my renewals close in the next 60 days?,"In your book, renewals closing within 60 days (by 2026-07-31): 11 deals, €948,368 total [list_my_open_deals].
+
+| Account | Stage | Amount | Close Date |
+|---|---|---|---|
+| Brightline Retail GmbH | Negotiation | €92,000 | 2026-06-15 |
+| Halcyon Hospitality Group | Negotiation | €76,000 | 2026-06-19 |
+| Sable Studios SAS | Discovery | €257,698 | 2026-06-20 |
+| Cobalt Manufacturing B.V. | Qualification | €27,267 | 2026-06-27 |
+| Forge Logistics ApS | Demo | €74,808 | 2026-07-06 |
+| Mosaic Education AG | Discovery | €39,347 | 2026-07-17 |
+| Echo Healthcare | Discovery | €129,626 | 2026-07-21 |
+| Ridge Financial Services ApS | Demo | €74,664 | 2026-07-26 |
+| Echo Healthcare | Discovery | €95,705 | 2026-07-27 |
+| Verdant Software SL | Proposal | €29,634 | 2026-07-29 |
+| Tide Logistics AG | Negotiation | €51,619 | 2026-07-31 |
+
+Note: Echo Healthcare has two separate renewal opportunities in this window."
+2026-07-15T16:47:10.724264,lena.koehler@personio.de,like,,"Why do we lose deals, based on our actual closed-lost data?","In your book (6 closed-lost deals), empirical reasons [get_stats]: Lost to incumbent 2, Lost to HiBob 1, Lost to Workday 1, Internal build 1, Compliance driver 1.
+
+Company-wide (18 closed-lost deals, if that's what you meant): Lost to incumbent 4, Internal build 3, Lost to HiBob 3, Price 2, No decision 2, Lost to BambooHR 1, Lost to Workday 1, Compliance driver 1, Timing 1.
+
+So in your book, incumbent displacement and competitor losses (HiBob + Workday) dominate — 4 of 6 losses. Company-wide, incumbent/competitor losses are still the largest cluster (8 of 18), but price and no-decision show up as additional factors not present in your own losses."
+2026-07-15T16:52:14.622324,lena.koehler@personio.de,like,,show me the ticket history,"Full ticket history for Halcyon Hospitality Group [tickets], 6 total, newest first:
+
+| Ticket | Priority | Status | Subject | Created | Resolved |
+|---|---|---|---|---|---|
+| TKT-00004 | P2 | Resolved | Time tracking not syncing with payroll | 2026-04-29 | 2026-05-05 |
+| TKT-00047 | P1 | Resolved | Payroll error: 14 employees underpaid in March cycle | 2026-03-23 | 2026-03-30 |
+| TKT-00006 | P3 | Resolved | Custom report not exporting | 2026-03-19 | 2026-03-25 |
+| TKT-00005 | P3 | Resolved | Performance review template missing field | 2026-03-17 | 2026-03-26 |
+| TKT-00002 | P3 | **In Progress** | Reporting line update failing in bulk | 2026-03-03 | — (open 90 days) |
+| TKT-00003 | P2 | Resolved | Permission error on payroll module | 2025-12-11 | 2025-12-17 |
+
+Notable: TKT-00047 (P1, March payroll error) — 14 employees underpaid due to a misconfigured allowance rule set during onboarding, not a platform bug; credits issued, but customer trust was impacted and it's referenced in later activity notes as a live sentiment driver going into the renewal. TKT-00002 is the only still-open item, a P3 sitting unresolved for 90 days."
+2026-07-15T16:52:17.625763,lena.koehler@personio.de,like,,show me the ticket history,"Full ticket history for Halcyon Hospitality Group [tickets], 6 total, newest first:
+
+| Ticket | Priority | Status | Subject | Created | Resolved |
+|---|---|---|---|---|---|
+| TKT-00004 | P2 | Resolved | Time tracking not syncing with payroll | 2026-04-29 | 2026-05-05 |
+| TKT-00047 | P1 | Resolved | Payroll error: 14 employees underpaid in March cycle | 2026-03-23 | 2026-03-30 |
+| TKT-00006 | P3 | Resolved | Custom report not exporting | 2026-03-19 | 2026-03-25 |
+| TKT-00005 | P3 | Resolved | Performance review template missing field | 2026-03-17 | 2026-03-26 |
+| TKT-00002 | P3 | **In Progress** | Reporting line update failing in bulk | 2026-03-03 | — (open 90 days) |
+| TKT-00003 | P2 | Resolved | Permission error on payroll module | 2025-12-11 | 2025-12-17 |
+
+Notable: TKT-00047 (P1, March payroll error) — 14 employees underpaid due to a misconfigured allowance rule set during onboarding, not a platform bug; credits issued, but customer trust was impacted and it's referenced in later activity notes as a live sentiment driver going into the renewal. TKT-00002 is the only still-open item, a P3 sitting unresolved for 90 days."
+2026-07-15T16:56:46.743542,lena.koehler@personio.de,like,,Fjord,"The CRM has no ticket history for Fjord Logistics AS (ACC-0003) — 0 tickets on record [tickets]. Makes sense given it's still a prospect, pre-close."

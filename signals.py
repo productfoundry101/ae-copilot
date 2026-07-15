@@ -112,6 +112,10 @@ def check_renewals(account_id, segment):
             continue
         if o["TYPE"] == "Renewal" and -window <= -days_past:
             pass  # handled below via generic checks
+        # if/elif: an already-overdue close date is the more urgent problem,
+        # so it wins over "renewal window approaching" for the same deal.
+        # DAYS_IN_STAGE below is a separate, non-exclusive check: a deal can
+        # be both overdue/in-window AND stalled at the same time.
         if days_past > 0:
             out.append(_sig(
                 "overdue_close_date", "high" if o["TYPE"] == "Renewal" else "medium",
@@ -164,7 +168,9 @@ def _last_touch(contact, activity_dates):
     if contact["CONTACT_ID"] in activity_dates:
         candidates.append(_days(activity_dates[contact["CONTACT_ID"]]))
     candidates = [c for c in candidates if c is not None]
-    return min(candidates) if candidates else None  # min days ago = most recent
+    # _days() convention: smaller number = more recent (fewer days have
+    # passed). min() here means "trust whichever source says most recent."
+    return min(candidates) if candidates else None
 
 
 def check_engagement(account_id):

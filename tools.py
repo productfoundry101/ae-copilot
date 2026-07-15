@@ -274,8 +274,35 @@ TOOLS: list[dict] = [
 ]
 
 
+MAX_SHOWN_SQL = 8  # book-wide scans run hundreds of queries; cap the display
+
+
 def execute_tool(name: str, args: dict, ctx: dict) -> dict | list:
-    """Run one tool call. ctx carries the AE identity set at login."""
+    """Run one tool call and attach the real SQL it ran to its method block
+    (for the UI's 'How this was calculated' panel)."""
+    db.reset_query_log()
+    result = _execute_tool(name, args, ctx)
+    if isinstance(result, dict) and isinstance(result.get("method"), dict):
+        seen, sqls = set(), []
+        for q in db.captured_sql():
+            if q not in seen:
+                seen.add(q)
+                sqls.append(q)
+        if sqls:
+            shown = sqls[:MAX_SHOWN_SQL]
+            if len(sqls) > MAX_SHOWN_SQL:
+                shown.append(f"... and {len(sqls) - MAX_SHOWN_SQL} more "
+                             "queries (one per account scanned)")
+            result["method"]["sql"] = shown
+    return result
+
+
+def _execute_tool(name: str, args: dict, ctx: dict) -> dict | list:
+    """Run one tool call. ctx carries the AE identity set at login (never
+    taken from model text, so 'whose book' can't be spoofed by a prompt).
+    Dispatches by name to the matching handler below; unknown names and any
+    runtime exception both come back as {"error": ...} rather than crashing,
+    so the model always gets something it can react to."""
     try:
         if name == "find_account":
             rows = db.find_accounts(args["query"])
@@ -345,6 +372,9 @@ def execute_tool(name: str, args: dict, ctx: dict) -> dict | list:
                                                args.get("signal")))
         if name == "get_stats":
             return _jsonable(db.stats(args["scope"], ctx["ae_email"]))
+
+        # --- account-scoped tools from here down: validate the id once,
+        # shared by all six, before any of their individual handlers run ---
         if name in ("run_risk_sweep", "get_opportunities", "get_contacts",
                     "get_activities", "get_usage", "get_tickets"):
             bad = _bad_account_id(args.get("account_id"))

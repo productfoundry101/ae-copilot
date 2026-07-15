@@ -74,6 +74,7 @@ def _connect():
             user=os.environ["SNOWFLAKE_USER"],
             warehouse=os.environ.get("SNOWFLAKE_WAREHOUSE", "COMPUTE_XS_WH"),
             database="PERSONIO",
+            role=os.environ.get("SNOWFLAKE_ROLE", "APPLICANT_FR"),
         )
         # Human Snowflake users with MFA can't authenticate with a plain
         # password from code. Supported alternatives, in precedence order:
@@ -85,8 +86,11 @@ def _connect():
         key_path = os.environ.get("SNOWFLAKE_PRIVATE_KEY_PATH", "")
         authenticator = os.environ.get("SNOWFLAKE_AUTHENTICATOR", "")
         if pat:
-            kwargs["authenticator"] = "PROGRAMMATIC_ACCESS_TOKEN"
+            # PAT passed via the `token` param WITH the explicit authenticator
+            # (confirmed working config with the Snowflake admin team). Passing
+            # it as `password` returns "token is invalid"; `token` is correct.
             kwargs["token"] = pat
+            kwargs["authenticator"] = "PROGRAMMATIC_ACCESS_TOKEN"
         elif key_path:
             kwargs["private_key_file"] = key_path
             if os.environ.get("SNOWFLAKE_PRIVATE_KEY_PASSPHRASE"):
@@ -105,6 +109,28 @@ def _connect():
 # SQL narration only at COPILOT_DEBUG=2; level 1 keeps the story readable.
 DEBUG_SQL = os.getenv("COPILOT_DEBUG", "").strip() == "2"
 
+# Rolling log of the actual queries run, rendered for humans (tables resolved,
+# parameters inlined). tools.py resets this per tool call and reads it back to
+# show the real SQL in the UI's "How this was calculated" panel.
+_QUERY_LOG: list[str] = []
+
+
+def reset_query_log() -> None:
+    _QUERY_LOG.clear()
+
+
+def captured_sql() -> list[str]:
+    return list(_QUERY_LOG)
+
+
+def _inline(sql: str, params: tuple) -> str:
+    """Inline ? parameters into an already-table-resolved SQL string, for
+    display only (never executed)."""
+    out = sql
+    for p in params:
+        out = out.replace("?", f"'{p}'" if isinstance(p, str) else str(p), 1)
+    return " ".join(out.split())  # collapse whitespace to one line
+
 
 def query(sql: str, params: tuple = ()) -> list[dict]:
     """Run a SELECT and return rows as a list of dicts.
@@ -114,8 +140,14 @@ def query(sql: str, params: tuple = ()) -> list[dict]:
     the SQL, which rules out injection even though the model never writes
     SQL itself (all queries in this codebase are hand-written).
     """
+    # Two different substitutions, resolved at two different times:
+    # {table} names are swapped in Python, here, before the DB ever sees the
+    # query (just picks which physical table to read). ? placeholders are
+    # resolved by the DB driver itself, from `params`, at execution time
+    # below — that's the part that makes injection impossible.
     physical = {k: v[DATA_MODE] for k, v in TABLES.items()}
     sql = sql.format(**physical)
+    _QUERY_LOG.append(_inline(sql, params))  # display copy of what actually ran
 
     conn = _connect()
     if DATA_MODE == "snapshot":
@@ -243,6 +275,9 @@ def stats(scope: str, ae_email: str) -> dict:
         acc_where, params = "", ()
         scope_desc = "company-wide (all accounts, all AEs)"
 
+    # f-strings below: {{accounts}} (doubled braces) survives as a literal
+    # {accounts} placeholder for query()'s later .format(**physical) call;
+    # {acc_where} (single braces) is substituted immediately, right here.
     sql_status = (f"SELECT STATUS, COUNT(*) AS N FROM {{accounts}} {acc_where} "
                   "GROUP BY STATUS ORDER BY N DESC")
     sql_segment = (f"SELECT SEGMENT, COUNT(*) AS N FROM {{accounts}} {acc_where} "
@@ -277,9 +312,9 @@ def stats(scope: str, ae_email: str) -> dict:
             "definitions": [
                 "open deal = stage in Discovery, Qualification, Demo, "
                 "Proposal or Negotiation",
-                "all counts and sums computed in SQL, not by the model",
             ],
-            "sql": [sql_status, sql_pipeline],
+            # SQL is attached generically in tools.execute_tool from the real
+            # captured queries, so every tool shows the exact SQL it ran.
         },
         "total_accounts": total_accounts,
         "accounts_by_status": status_counts,
@@ -297,5 +332,7 @@ def stats(scope: str, ae_email: str) -> dict:
 
 
 def all_aes() -> list[str]:
+    """Every distinct AE email that owns at least one account. Powers the
+    sidebar's identity picker in app.py; there is no separate auth system."""
     rows = query("SELECT DISTINCT OWNER_AE FROM {accounts} ORDER BY OWNER_AE", ())
     return [r["OWNER_AE"] for r in rows]

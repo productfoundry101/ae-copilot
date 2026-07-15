@@ -12,7 +12,9 @@ Run:  streamlit run app.py
 from __future__ import annotations
 
 import csv
+import html
 import os
+import re
 from datetime import datetime
 from pathlib import Path
 
@@ -44,46 +46,57 @@ def get_overview(ae_email: str) -> dict:
     return briefing.book_overview(ae_email)
 
 
-def source_label(call: dict) -> str:
-    """Human-readable source chip, derived mechanically from the tool call
-    (machine-authored provenance; the model never writes these)."""
+# The data source(s) each tool actually reads, in AE-facing names. Used to
+# tell the AE which parts of the CRM / enablement library an answer came from.
+_TOOL_SOURCES = {
+    "find_account": ["Accounts"],
+    "list_my_accounts": ["Accounts"],
+    "list_my_open_deals": ["Opportunities"],
+    "get_book_priorities": ["Accounts", "Opportunities"],
+    "get_stats": ["Accounts", "Opportunities"],
+    "run_risk_sweep": ["Accounts", "Opportunities", "Contacts", "Usage",
+                       "Support tickets", "Activities"],
+    "scan_book_signals": ["Accounts", "Opportunities", "Contacts", "Usage",
+                          "Support tickets", "Activities"],
+    "get_opportunities": ["Opportunities"],
+    "get_contacts": ["Contacts"],
+    "get_activities": ["Activities"],
+    "get_usage": ["Usage"],
+    "get_tickets": ["Support tickets"],
+    "list_knowledge_docs": [],  # just browsing the index, not a real source
+}
+
+_DOC_NAMES = {
+    "sales_playbook": "Sales playbook", "icp": "ICP",
+    "battlecard_workday": "Workday battlecard", "battlecard_hibob": "HiBob battlecard",
+    "objection_handling": "Objection handling", "pricing_cheatsheet": "Pricing guide",
+    "customer_case_studies": "Case studies",
+}
+
+TOOL_NAMES = {t["name"] for t in agent.tools.TOOLS}
+
+
+def call_sources(call: dict) -> list[str]:
+    """The AE-facing data source(s) a single tool call touched."""
     n, a = call["name"], call.get("args", {})
-    aid = a.get("account_id", "")
-    if n == "find_account":
-        return f"CRM account lookup: '{a.get('query', '')}'"
-    if n == "run_risk_sweep":
-        return f"Signal engine: {aid}"
-    if n == "scan_book_signals":
-        sig = a.get("signal")
-        return "Signal engine: full book scan" + (f" ({sig})" if sig else "")
-    if n == "get_book_priorities":
-        return "Priority ranking (top 5 view)"
-    if n == "get_stats":
-        return f"CRM aggregates, SQL ({a.get('scope', '?')} scope)"
-    if n == "list_my_accounts":
-        return "CRM: my accounts"
-    if n == "list_my_open_deals":
-        extra = [x for x in [a.get("opp_type"),
-                             f"≤{a['closing_within_days']}d" if a.get("closing_within_days") is not None else None] if x]
-        return "CRM: open deals" + (f" ({', '.join(extra)})" if extra else "")
-    if n == "get_opportunities":
-        return f"CRM opportunities: {aid}"
-    if n == "get_contacts":
-        return f"CRM contacts: {aid}"
-    if n == "get_activities":
-        extra = [x for x in [f"since {a['since']}" if a.get("since") else None,
-                             f"'{a['contains']}'" if a.get("contains") else None] if x]
-        return f"Activity log: {aid}" + (f" ({', '.join(extra)})" if extra else "")
-    if n == "get_usage":
-        return f"Product usage: {aid}"
-    if n == "get_tickets":
-        return f"Support tickets: {aid}"
     if n == "read_knowledge_doc":
-        sec = a.get("section")
-        return f"Doc: {a.get('name', '')}" + (f" › {sec}" if sec else "")
-    if n == "list_knowledge_docs":
-        return "Doc library index"
-    return n
+        return [_DOC_NAMES.get(a.get("name", ""), a.get("name", "Enablement doc"))]
+    return list(_TOOL_SOURCES.get(n, []))
+
+
+def answer_sources(calls: list[dict]) -> list[str]:
+    """Deduped, ordered set of sources across every (non-blocked) call, so the
+    AE sees 'Accounts, Opportunities, HiBob battlecard' rather than a list of
+    tool names."""
+    seen, out = set(), []
+    for c in calls:
+        if c.get("gated"):
+            continue
+        for s in call_sources(c):
+            if s not in seen:
+                seen.add(s)
+                out.append(s)
+    return out
 
 
 def save_feedback(ae_email: str, question: str, answer: str,
@@ -120,37 +133,138 @@ def feedback_widget(idx: int, ae_email: str, question: str, answer: str):
                        "that matters most.")
 
 
+# Method lines that are implementation trivia, not business meaning: hide
+# these from the AE view (they stay in the raw payload / traces for engineers).
+_NOISE = ("computed in sql", "by the model", "authoritative", "computed in code",
+          "connector", "deterministic coded", "network-policy", "recognises it")
+
+
+def _is_noise(text: str) -> bool:
+    t = str(text).lower()
+    return any(k in t for k in _NOISE)
+
+
+def _scope_headline(scope: str) -> str:
+    """The plain 'who/what' part of a scope string, before any filter clause."""
+    if not scope:
+        return ""
+    return re.split(r",\s*(type=|closing|filtered)", scope)[0].strip().rstrip(",")
+
+
+def _constraints_from_scope(scope: str) -> list[str]:
+    """Pull out constraint clauses (date windows, type filters, keyword
+    filters) so they can be shown as explicit 'constraints applied'."""
+    if not scope:
+        return []
+    out = []
+    for pat, label in [
+        (r"closing on or before ([0-9-]+)[^,]*", "Only deals closing on or before \\1"),
+        (r"type=(\w[\w ]*)", "Only \\1 deals"),
+        (r"since ([0-9-]+)", "Only activity since \\1"),
+        (r"containing '([^']+)'", "Only entries mentioning '\\1'"),
+    ]:
+        m = re.search(pat, scope)
+        if m:
+            out.append(re.sub(pat, label, m.group(0)))
+    return out
+
+
+# Normalise any inline citation the model wrote to a clean, AE-facing
+# [source: X] tag. Maps internal tool names AND bare table/doc names to the
+# data source an AE recognises; tool names never reach the AE.
+_CITE_MAP = {
+    "run_risk_sweep": "risk signals", "scan_book_signals": "risk signals",
+    "signals": "risk signals", "get_book_priorities": "priority ranking",
+    "get_stats": "CRM records", "get_opportunities": "opportunities",
+    "get_contacts": "contacts", "get_activities": "activities",
+    "get_usage": "usage", "get_tickets": "tickets",
+    "find_account": "accounts", "list_my_accounts": "accounts",
+    "list_my_open_deals": "opportunities",
+    "opportunities": "opportunities", "activities": "activities",
+    "usage": "usage", "tickets": "tickets", "contacts": "contacts",
+    "accounts": "accounts",
+    "sales_playbook": "playbook", "playbook": "playbook", "icp": "ICP",
+    "battlecard_hibob": "HiBob battlecard", "battlecard_workday": "Workday battlecard",
+    "objection_handling": "objection handling", "pricing_cheatsheet": "pricing guide",
+    "customer_case_studies": "case studies",
+}
+
+
+def _cite_sub(m: "re.Match") -> str:
+    inner = m.group(1)
+    if m.string[m.end():m.end() + 1] == "(":
+        return m.group(0)  # markdown link [text](url) — leave untouched
+    key = re.split(r"[:\s]", inner.strip(), 1)[0].strip().lower()
+    if inner.strip().lower().startswith("source:"):
+        return f":grey[[{inner.strip()}]]"
+    src = _CITE_MAP.get(key)
+    return f":grey[[source: {src}]]" if src else m.group(0)
+
+
+def format_answer(text: str) -> str:
+    """Rewrite inline citations to a uniform grey [source: X] tag. Tool names
+    and bare table names both map to the data source an AE recognises; no
+    internal tool name ever reaches the answer."""
+    return re.sub(r"\[([^\]\n]+)\]", _cite_sub, text)
+
+
 def render_sources(calls: list[dict]):
-    """Source chips (AE layer) + raw calls, method cards and SQL (engineer
-    layer). Method cards are machine-authored by the tools and rendered
-    without passing through the model, so provenance cannot be misstated."""
-    chips = " · ".join(
-        f":red[blocked: {source_label(c)}]" if c.get("gated")
-        else f":blue[{source_label(c)}]" for c in calls)
-    st.markdown(f"Sources: {chips}")
-    with st.expander("Method & raw calls"):
+    """AE view: which data sources the answer used (deduped, plain names), with
+    an expandable 'How this was calculated' for the method + real-parameter
+    queries. Everything here is machine-authored; the model never writes it."""
+    sources = answer_sources(calls)
+    blocked = [c for c in calls if c.get("gated")]
+    chips = " · ".join(f":blue[{s}]" for s in sources) or ":grey[none]"
+    line = f"Sources: {chips}"
+    if blocked:
+        line += "  ·  :red[⚠ asked to clarify which account]"
+    st.markdown(line)
+
+    with st.expander("How this was calculated"):
         for c in calls:
-            st.code(f"{c['name']}({c['args']})", language=None)
-            if c.get("method"):
-                m = c["method"]
-                lines = []
-                if m.get("scope"):
-                    lines.append(f"Scope: {m['scope']}")
-                if "definition" in m:
-                    lines.append(f"Definition: {m['definition']}")
-                for d in m.get("definitions", []):
-                    lines.append(f"Definition: {d}")
-                if "truncated" in m:
-                    lines.append(f"Truncated: {m['truncated']}")
-                if "accounts_scanned" in m:
-                    lines.append(f"Coverage: {m['accounts_scanned']} scanned, "
-                                 f"{m['accounts_flagged']} flagged")
-                if m.get("note"):
-                    lines.append(f"Note: {m['note']}")
-                if lines:
-                    st.caption("  \n".join(str(x) for x in lines))
-                for sql in m.get("sql", []):
-                    st.code(sql, language="sql")
+            m = c.get("method") or {}
+            src = ", ".join(call_sources(c)) or "—"
+            st.markdown(f"**{src}**")
+
+            # Lead with the definitions and constraints applied (what "churn",
+            # "priorities", date windows etc. mean for THIS answer).
+            defs = ([m["definition"]] if m.get("definition") else []) + m.get("definitions", [])
+            defs = [d for d in defs if not _is_noise(d)]
+            constraints = _constraints_from_scope(m.get("scope", ""))
+            if defs or constraints:
+                st.caption("**Definitions & constraints**")
+                for d in defs:
+                    st.caption(f"• {d}")
+                for cst in constraints:
+                    st.caption(f"• {cst}")
+
+            # Then who/how much.
+            meta = []
+            base_scope = _scope_headline(m.get("scope", ""))
+            if base_scope:
+                meta.append(base_scope)
+            if "accounts_scanned" in m:
+                meta.append(f"{m['accounts_scanned']} accounts checked, "
+                            f"{m['accounts_flagged']} flagged")
+            if m.get("note") and not _is_noise(m["note"]):
+                meta.append(m["note"])
+            if meta:
+                st.caption("  \n".join(meta))
+
+            # Finally, the actual queries — collapsed by default (HTML details,
+            # since Streamlit forbids an expander nested inside an expander).
+            sqls = m.get("sql", [])
+            if sqls:
+                body = "".join(
+                    f"<div style='margin:4px 0;font-family:monospace;font-size:12px;"
+                    f"white-space:pre-wrap;color:#334155'>{html.escape(q)}</div>"
+                    for q in sqls)
+                st.markdown(
+                    f"<details><summary style='cursor:pointer;color:#64748b;"
+                    f"font-size:13px'>View SQL queries ({len(sqls)})</summary>"
+                    f"<div style='padding:6px 0'>{body}</div></details>",
+                    unsafe_allow_html=True)
+            st.divider()
 
 
 def start_conversation(question: str):
@@ -166,11 +280,16 @@ def start_conversation(question: str):
 
 with st.sidebar:
     st.title("AE Copilot")
+    # No auth: "signing in" is picking an email from the AEs the CRM knows
+    # about. ae_email is the one identity variable threaded through every
+    # call below (tools, gate, digest) for the rest of this session.
     aes = db.all_aes()
     labels = {e: agent.AE_NAMES.get(e, e) for e in aes}
     ae_email = st.selectbox("Signed in as", aes, format_func=lambda e: labels[e],
                             index=aes.index("lena.koehler@personio.de")
                             if "lena.koehler@personio.de" in aes else 0)
+    # Cached 10 min (see get_overview above): cheap on repeated reruns,
+    # since Streamlit re-executes this whole script on every interaction.
     overview = get_overview(ae_email)
     st.markdown(f"**{overview['total_accounts']} accounts** in your book")
     if st.button("New conversation"):
@@ -194,10 +313,15 @@ if st.session_state.get("ae_email") != ae_email:
     st.session_state.history = []
     st.session_state.tool_log = {}
 
+# setdefault: session_state persists across reruns, but only after the first
+# rerun where these keys exist. history = chat turns; tool_log = {history
+# index -> tool calls that produced that answer}, used by render_sources().
 history = st.session_state.setdefault("history", [])
 tool_log = st.session_state.setdefault("tool_log", {})
 
 # --- welcome briefing (deterministic, only on an empty conversation) --------
+# Shown once per fresh conversation. Every number here comes from SQL/signals
+# (briefing.book_overview), never the model: fast, free, identical on reload.
 
 if not history:
     first_name = agent.AE_NAMES.get(ae_email, ae_email).split()[0]
@@ -226,12 +350,14 @@ if not history:
 
 for i, msg in enumerate(history):
     with st.chat_message(msg["role"]):
-        st.markdown(msg["content"])
         if msg["role"] == "assistant":
+            st.markdown(format_answer(msg["content"]))
             if i in tool_log and tool_log[i]:
                 render_sources(tool_log[i])
             question = history[i - 1]["content"] if i > 0 else ""
             feedback_widget(i, ae_email, question, msg["content"])
+        else:
+            st.markdown(msg["content"])
 
 question = st.chat_input("Ask about an account, your pipeline, or the playbook")
 if not question:

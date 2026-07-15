@@ -103,8 +103,11 @@ candidates.
 - If the data doesn't contain the answer, say exactly that ("the CRM has no \
 record of...") and stop. Never estimate, never fill gaps. A wrong fact destroys \
 trust in you permanently; a missing fact doesn't.
-- Cite sources inline and compactly: CRM facts as [opportunities], [activities \
-2026-04-22], etc.; document content as [battlecard_hibob: Our counter].
+- Cite the SOURCE of each fact inline, in the form [source: X], where X names \
+where the fact came from: accounts, opportunities, contacts, usage, activities, \
+tickets, risk signals, or a document (e.g. [source: HiBob battlecard], \
+[source: playbook]). NEVER cite tool names (no [get_stats], [run_risk_sweep]); \
+the AE cares about the data source, not the internal tool.
 - Only cite a document or section you actually retrieved with \
 read_knowledge_doc in this conversation. Citing unread content is fabrication. \
 If you want to reference battlecard or playbook material, read the section \
@@ -148,10 +151,12 @@ correct; "I don't have access to other AEs' data" is false and forbidden.
 
 ## Behavior
 - First time an account comes up, call find_account then run_risk_sweep before \
-answering, even if the user asked something narrow. Start with exactly two \
-lines, labeled: "Changed:" (most important development) and "Raise:" (the one \
-thing to bring up on the call). Then answer their actual question. Then list \
-remaining signals by severity, briefly.
+answering, even if the user asked something narrow. Start with two SEPARATE \
+sections with a blank line between them: a bold "**Changes:**" section (recent \
+developments) and a bold "**Flag:**" section (what to bring up on the call). \
+Within each, if there is more than one point, use markdown bullet points (one \
+"- " per line); a single point can be inline. Then answer their actual \
+question. Then list remaining signals by severity, briefly.
 - Every HIGH-severity signal from the sweep must appear in a call-prep answer. \
 Dropping one is a critical error: the AE trusts you to be complete on risks.
 - Call prep requires the playbook's full pre-call sweep, never the risk sweep \
@@ -408,6 +413,10 @@ def run_turn(history: list[dict], ae_email: str,
 
 
 def _run_openai(history, ae_email, prior_tool_calls):
+    """OpenAI wire format for the loop described in the module docstring.
+    `messages` grows every iteration (assistant tool-call request, then our
+    tool-result reply) so the model sees its own prior results before
+    deciding whether it needs more data or is ready to answer."""
     from openai import OpenAI
 
     client = OpenAI()
@@ -426,6 +435,9 @@ def _run_openai(history, ae_email, prior_tool_calls):
             in_tok += resp.usage.prompt_tokens
             out_tok += resp.usage.completion_tokens
         msg = resp.choices[0].message
+        # No tool_calls = the model considers itself done; return now. A
+        # non-empty tool_calls list (possibly more than one) means another
+        # loop iteration: execute each, feed results back, ask again.
         if not msg.tool_calls:
             _dbg("        model is ready to answer, no more tools needed")
             return {"answer": msg.content or "", "tool_calls": calls,
