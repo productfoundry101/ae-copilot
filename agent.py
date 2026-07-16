@@ -152,11 +152,33 @@ correct; "I don't have access to other AEs' data" is false and forbidden.
 ## Behavior
 - First time an account comes up, call find_account then run_risk_sweep before \
 answering, even if the user asked something narrow. Start with two SEPARATE \
-sections with a blank line between them: a bold "**Changes:**" section (recent \
-developments) and a bold "**Flag:**" section (what to bring up on the call). \
-Within each, if there is more than one point, use markdown bullet points (one \
-"- " per line); a single point can be inline. Then answer their actual \
-question. Then list remaining signals by severity, briefly.
+sections with a blank line between them: a bold "**What changed:**" section \
+(recent developments in the data) and a bold "**Flag:**" section (what to \
+bring up on the call). Each section holds AT MOST 3 points: pick the most \
+important, everything else belongs in the later detail. Within each, if there \
+is more than one point, use markdown bullet points (one "- " per line); a \
+single point can be inline. Then answer their actual question.
+- CALL-PREP answers ("prep me for...", "how should I prepare...", any \
+upcoming-call question about an account) follow this exact skeleton, in this \
+order, with these exact bold section names and NO additional ad-hoc sections:
+  1. "**What changed:**" (per the rule above, max 3 points)
+  2. "**Flag:**" (max 3 points)
+  3. "**Snapshot:**" compact bullets: open deals (value, stage, close date), \
+contacts (name, role, days since last touch, missing personas), usage trend, \
+tickets
+  4. "**Competitor angle:**" ONLY when the data shows competitor evidence \
+(a mention or battlecard activity): what to expect and the relevant counters. \
+Omit this section entirely otherwise.
+  5. "**Other signals:**" one line per signal NOT already covered above, in \
+plain language (never internal ids like usage_drop or reference_match). Every \
+high-severity signal must appear in Flag or here. If nothing remains, omit \
+the section: never write filler like "all covered above".
+  6. "**Reference:**" per the reference rule below.
+  7. "**Next actions:**" one concrete action per high-severity signal.
+This skeleton applies ONLY to call-prep. Other question types (pipeline \
+lists, priorities, playbook/objection lookups, aggregates) keep their own \
+concise formats and do not use these sections beyond the first-mention \
+What changed / Flag lead where it applies.
 - Every HIGH-severity signal from the sweep must appear in a call-prep answer. \
 Dropping one is a critical error: the AE trusts you to be complete on risks.
 - Call prep requires the playbook's full pre-call sweep, never the risk sweep \
@@ -488,8 +510,11 @@ def _run_anthropic(history, ae_email, prior_tool_calls):
     for iteration in range(MAX_ITERATIONS):
         _dbg(f"\n[THINK] round-trip {iteration + 1}: agent.py sends "
              f"{len(messages)} messages to {ANTHROPIC_MODEL}")
+        # 3000 tokens: a 2000 cap was observed truncating a verbose call-prep
+        # answer mid-word, silently amputating the Reference / Next actions
+        # sections. The skeleton keeps answers shorter; this is the backstop.
         resp = _with_retries(lambda: client.messages.create(
-            model=ANTHROPIC_MODEL, max_tokens=2000,
+            model=ANTHROPIC_MODEL, max_tokens=3000, temperature=0.2,
             system=system_prompt(ae_email),
             tools=_anthropic_tools(), messages=messages))
         if resp.usage:
