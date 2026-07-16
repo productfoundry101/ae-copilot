@@ -1,4 +1,4 @@
-# AE Copilot
+# 🧭 AE Copilot
 
 A grounded assistant that helps Personio Account Executives prepare for account calls and catch renewals quietly slipping away. It queries the CRM live, applies the sales playbook as deterministic code, and cites every fact. It also works unprompted: a scheduled morning digest ranks each AE's book and flags what needs attention before they ask.
 
@@ -10,7 +10,7 @@ Built for the Internal AI PM case study. Design rationale and scope cuts are in 
 
 ---
 
-## What it is, and who it is for
+## 🎯 What it is, and who it is for
 
 The user is a mid-market Account Executive carrying a book of roughly 40 accounts. It does not summarize what they already know. It surfaces the signal sitting in the data that nobody flags in time: a usage drop, a renewal window opening, a single-threaded deal with no economic buyer, a competitor named in a QBR note, an unresolved P1 ticket.
 
@@ -21,7 +21,7 @@ Two principles shape the build:
 
 ---
 
-## Four core capabilities
+## ⚡ Four core capabilities
 
 1. **Proactive risk and gap detection.** A deterministic engine (`signals.py`) evaluates 14 signal types against an account: usage decline, renewal windows, overdue or stalled deals, single-threading, missing buyer personas, quiet accounts, open and recent-P1 tickets, competitor mentions, data-quality problems. Each fired signal carries its evidence and the playbook rule behind it. The model prioritizes and explains signals; it cannot invent one the rules did not fire.
 2. **Multi-turn chat copilot with citations.** The AE asks anything about their accounts, across turns. It fetches live data at the moment of the question, leads a call-prep answer with what changed and what to flag, and sources every fact inline. Tool calls and the exact SQL are one click away.
@@ -32,7 +32,7 @@ Two behaviors sit under these rather than beside them: **honest refusal** ("the 
 
 ---
 
-## Quick start
+## 🚀 Quick start
 
 The fastest way to try it is the [live demo](https://ae-copilot-sanjeevrao.streamlit.app/). To run locally:
 
@@ -64,9 +64,9 @@ Snowflake credentials are only needed when `DATA_MODE=live`; see `.env.example` 
 
 ---
 
-## Architecture
+## 🏗️ Architecture
 
-Detection is deterministic, explanation is probabilistic. Risk signals, reference matching, prioritization, and every count and aggregation are hand-written code. The model orchestrates tools and explains results; it cannot assert a risk the rules did not fire, cite a document it did not read, run a data operation it is not configured for, or write SQL. All queries are hand-written and parameterized.
+🔑 **Detection is deterministic, explanation is probabilistic.** Risk signals, reference matching, prioritization, and every count and aggregation are hand-written code. The model orchestrates tools and explains results; it cannot assert a risk the rules did not fire, cite a document it did not read, run a data operation it is not configured for, or write SQL. All queries are hand-written and parameterized.
 
 ```mermaid
 flowchart TD
@@ -123,7 +123,7 @@ Nothing is special-cased per account; the same machinery runs for any of the 75 
 
 ---
 
-## Key technical choices and trade-offs
+## ⚖️ Key technical choices and trade-offs
 
 | Choice | Alternative rejected | Why, and the trade-off |
 |---|---|---|
@@ -138,7 +138,7 @@ Nothing is special-cased per account; the same machinery runs for any of the 75 
 
 ---
 
-## Data handling and limitations
+## ⚠️ Data handling and limitations
 
 The synthetic dataset stops on **2026-05-31**. Three consequences, handled explicitly:
 
@@ -148,7 +148,7 @@ The synthetic dataset stops on **2026-05-31**. Three consequences, handled expli
 
 ---
 
-## Quality: how we know it works
+## ✅ Quality: how we know it works
 
 Four layers, from strict to human.
 
@@ -160,12 +160,12 @@ Four layers, from strict to human.
 
 **Tier 4: Closed feedback loop.** Every answer can be marked useful or not, or reported as a discrepancy, in the UI; all of it lands in `feedback/`. Every verified discrepancy becomes a new eval case, so a fixed bug can never silently return.
 
-The suite only ratchets: it grew from 12 to 25 cases over the build. The one-line version of the whole journey is that the model never got more trusted over time, it got less load-bearing. Every failure the testing found moved another responsibility (matching, counting, filtering, provenance, validation) out of the model and into code.
+The suite only ratchets: it grew from 12 to 25 cases over the build. 🔑 The model never got more trusted over time, it got less load-bearing: every failure the testing found moved another responsibility (matching, counting, filtering, provenance, validation) out of the model and into code.
 
 Run `python evals/unit_tests.py` then `python evals/run_evals.py` before any prompt or rule change.
 
 ---
 
-## Out of scope for the prototype
+## ✂️ Out of scope for the prototype
 
 Agentic actions (drafting emails, writing to the CRM), latent-intent inference, cross-session memory, custom thresholds, and integrations (Slack, email, calendar, Gong). Each is a deliberate cut with a stated upgrade path, not a gap. The digest's send step is a labeled stub; in production it is a Slack DM per AE.
