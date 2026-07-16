@@ -1,0 +1,124 @@
+timestamp,ae,provider,model,question,tool_calls,answer,latency_s,input_tokens,output_tokens,cost_usd
+2026-07-16T14:42:18.056438,lena.koehler@personio.de,anthropic,claude-sonnet-5,How should I prepare for my next call with Cobalt Manufacturing B.V.?,"[{""name"": ""find_account"", ""args"": {""query"": ""Cobalt Manufacturing B.V.""}}, {""name"": ""run_risk_sweep"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""single account ACC-0010, all rules evaluated"", ""definitions"": [""signals are deterministic coded rules; each carries its evidence and rule_source""], ""note"": null, ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM usage_data WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY MONTH"", ""SELECT * FROM opportunities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CLOSE_DATE"", ""SELECT * FROM contacts WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY LAST_INTERACTION DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 500"", ""SELECT * FROM tickets WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CREATED_DATE DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 1""]}}, {""name"": ""get_opportunities"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all opportunities on ACC-0010"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM opportunities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CLOSE_DATE""]}}, {""name"": ""get_contacts"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all contacts on ACC-0010"", ""definitions"": [""DAYS_SINCE_LAST_TOUCH is computed from the activity log; the raw LAST_INTERACTION field goes stale""], ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM contacts WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY LAST_INTERACTION DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 500""]}}, {""name"": ""get_activities"", ""args"": {""account_id"": ""ACC-0010"", ""since"": ""2026-04-01""}, ""method"": {""scope"": ""activities on ACC-0010 since 2026-04-01"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' AND ACTIVITY_DATE >= CAST('2026-04-01' AS DATE) ORDER BY ACTIVITY_DATE DESC LIMIT 25""]}}, {""name"": ""get_usage"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""monthly usage rows for ACC-0010"", ""definitions"": [""quote trends point-to-point with month names; negative values are corrupt and must be excluded and flagged""], ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM usage_data WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY MONTH""]}}, {""name"": ""get_tickets"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all support tickets for ACC-0010"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM tickets WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CREATED_DATE DESC""]}}]","**Changes:**
+- Product usage cratered: MAU averaged 26 in the first two tracked months vs. 10 in the last two (Dec 2025–May 2026) [source: usage data / risk signals].
+- P1 ticket ""SSO login failing for 30+ users"" opened 2026-04-20, resolved 2026-04-23 [source: tickets].
+- QBR/EBR with leadership held 2026-05-29 with Marco Costa, People Partner [source: activities].
+- The Expansion opp (OPP-00014, €32,256) has sat in Proposal for 31 days, close date 2026-07-13 [source: opportunities].
+
+**Flag:**
+- No Economic Buyer contact exists on this account — pain isn't reaching budget-holder level [source: risk signals].
+- Single-threaded: only Marco Costa (People Partner, User persona) engaged in the last 60 days; playbook wants 3+ stakeholders [source: contacts / risk signals].
+- No technical contact mapped — playbook notes a prior deal lost to internal build for the same reason [source: risk signals].
+- Renewal (OPP-00013, €27,267) closes in 26 days (2026-06-27) and is still in Qualification — playbook wants the renewal motion underway by now [source: opportunities / risk signals].
+
+**Deal/account snapshot for the call:**
+- Open deals: Renewal €27,267 (Qualification, closes 2026-06-27); Expansion €32,256 (Proposal, 31 days in stage, closes 2026-07-13) [source: opportunities].
+- Contacts: Marco Costa (People Partner, engaged 3 days ago), Jonas Lopez (Payroll Specialist, 61 days quiet), Mateo Karlsson (HRBP, 106 days quiet) — all Users, no EB or Technical persona on file [source: contacts].
+- Usage this period: Dec 2025 26 MAU → May 2026 17 MAU, with a dip to 0 in March 2026 [source: usage data].
+- Tickets: one P1 (SSO login failure, resolved in 3 days) and one P2 (CSV import issue, resolved) in the last few months, both closed [source: tickets].
+
+**Remaining signals (medium severity, briefly):**
+- Renewal in Qualification with 26 days to close [source: risk signals].
+- Expansion stalled 31 days in Proposal [source: risk signals].
+- No technical stakeholder on account [source: risk signals].
+- Recent P1 (SSO) now resolved, but worth acknowledging on the call [source: risk signals].
+
+**Reference:** No strong reference match returned by the sweep for this account.
+
+**Next actions:**
+- Usage drop (high): ask directly what's driving the drop to near-zero MAU in March and partial recovery since — don't let a shrinking footprint go unaddressed heading into renewal.
+- Single-threaded (high): use the QBR follow-up to get introduced to a second and third stakeholder beyond Marco Costa.
+- No Economic Buyer (high): identify and get access to the budget holder before the renewal conversation progresses past Qualification.",26.2,23405,2156,0.102555
+2026-07-16T15:06:15.782313,lena.koehler@personio.de,anthropic,claude-sonnet-5,How should I prepare for my next call with Cobalt Manufacturing B.V.?,"[{""name"": ""find_account"", ""args"": {""query"": ""Cobalt Manufacturing B.V.""}}, {""name"": ""run_risk_sweep"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""single account ACC-0010, all rules evaluated"", ""definitions"": [""signals are deterministic coded rules; each carries its evidence and rule_source""], ""note"": null, ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM usage_data WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY MONTH"", ""SELECT * FROM opportunities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CLOSE_DATE"", ""SELECT * FROM contacts WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY LAST_INTERACTION DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 500"", ""SELECT * FROM tickets WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CREATED_DATE DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 1""]}}, {""name"": ""get_opportunities"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all opportunities on ACC-0010"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM opportunities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CLOSE_DATE""]}}, {""name"": ""get_contacts"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all contacts on ACC-0010"", ""definitions"": [""DAYS_SINCE_LAST_TOUCH is computed from the activity log; the raw LAST_INTERACTION field goes stale""], ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM contacts WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY LAST_INTERACTION DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 500""]}}, {""name"": ""get_activities"", ""args"": {""account_id"": ""ACC-0010"", ""since"": ""2026-04-01""}, ""method"": {""scope"": ""activities on ACC-0010 since 2026-04-01"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' AND ACTIVITY_DATE >= CAST('2026-04-01' AS DATE) ORDER BY ACTIVITY_DATE DESC LIMIT 25""]}}, {""name"": ""get_usage"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""monthly usage rows for ACC-0010"", ""definitions"": [""quote trends point-to-point with month names; negative values are corrupt and must be excluded and flagged""], ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM usage_data WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY MONTH""]}}, {""name"": ""get_tickets"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all support tickets for ACC-0010"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM tickets WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CREATED_DATE DESC""]}}, {""name"": ""read_knowledge_doc"", ""args"": {""name"": ""battlecard_workday""}}]","**Changes:**
+- Product usage has dropped sharply: MAU averaged 26 in Dec/Jan 2025 vs 10 in Apr/May 2026 (avg across the tracked period) [source: risk signals]. Point-to-point, MAU fell from 26 in Dec 2025 to 17 in May 2026, with a near-zero trough of 0 in Mar 2026 and 4 in Apr 2026 [source: usage].
+- A P1 ticket (""SSO login failing for 30+ users"") was opened 2026-04-20 and resolved 2026-04-23 [source: tickets].
+- A QBR/EBR with leadership took place 2026-05-29 [source: activities].
+- Lena shared the Workday comparison battlecard with contacts twice recently: 2026-04-01 and 2026-05-07 [source: activities] — Observation (not a fired signal): this suggests Workday may be in the picture, though no competitor_mention signal fired on this account.
+
+**Flag:**
+- Renewal (OPP-00013, EUR 27,267, closing 2026-06-27) is still in Qualification with only 26 days left — behind where the playbook expects a renewal motion to be at this point [source: risk signals].
+- Expansion deal (OPP-00014, EUR 32,256) has been stuck in Proposal for 31 days [source: opportunities / risk signals].
+- No Economic Buyer is mapped on the account at all [source: risk signals].
+- No technical contact is mapped either — playbook notes a prior deal (Ines) was lost to an internal build for lack of an IT contact [source: risk signals].
+- Only one stakeholder, Marco Costa (People Partner), has engaged in the last 60 days; the other two contacts (Jonas Lopez, Payroll Specialist — 61 days since last touch; Mateo Karlsson, HRBP — 106 days since last touch) have gone quiet [source: contacts].
+
+**Your question — how to prepare:**
+Given the open renewal (EUR 27,267, closing 2026-06-27, Qualification) and expansion (EUR 32,256, closing 2026-07-13, Proposal), this looks like a renewal/expansion call. Priorities:
+1. Get multi-threaded fast — right now it's just Marco Costa (People Partner). Ask him directly who owns budget/signoff (Economic Buyer) and who owns IT/SSO (Technical contact), especially given the recent SSO P1.
+2. Address the usage drop directly in conversation — MAU cratered to 0 in Mar 2026, recovering only to 17 by May 2026 [source: usage]. Find out why (org change? onboarding stall? the SSO issue?).
+3. If Workday surfaces as a competitor, per the Workday battlecard: lead with time-to-value (6–10 weeks vs 6–18 months) and TCO (typically 50–70% lower for sub-2,000 employee customers), and ask discovery questions like whether they're evaluating Workday and who's championing it internally [source: Workday battlecard].
+
+Reference: no strong reference match — the sweep did not return a reference_match signal for this account.
+
+Next actions:
+- No Economic Buyer → get Marco Costa to identify and introduce the budget holder before the renewal deadline.
+- No technical contact → ask for an IT/ops contact, tying it to the recent SSO ticket.
+- Single-threaded (only Marco engaged) → re-engage Jonas Lopez and Mateo Karlsson or find new stakeholders on the call.
+
+Remaining signals by severity: usage_drop (high, covered above), single_threaded (high, covered above), no_economic_buyer (high, covered above) — all three high-severity signals are addressed above. Medium: renewal_window, stalled_deal, no_technical_contact, recent_p1 — all covered above.",28.8,37362,2163,0.144531
+2026-07-16T15:09:19.510098,lena.koehler@personio.de,anthropic,claude-sonnet-5,What should be my top priorities today?,"[{""name"": ""get_book_priorities"", ""args"": {}, ""method"": {""scope"": ""top 5 of 41 accounts in your book, ranked by high-severity signals, then medium, then nearest close date"", ""truncated"": true, ""note"": ""This is a prioritization view, NOT a complete list of accounts with any given problem."", ""sql"": [""SELECT * FROM accounts WHERE OWNER_AE = 'lena.koehler@personio.de' ORDER BY COMPANY_NAME"", ""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0063'"", ""SELECT * FROM usage_data WHERE ACCOUNT_ID = 'ACC-0063' ORDER BY MONTH"", ""SELECT * FROM opportunities WHERE ACCOUNT_ID = 'ACC-0063' ORDER BY CLOSE_DATE"", ""SELECT * FROM contacts WHERE ACCOUNT_ID = 'ACC-0063' ORDER BY LAST_INTERACTION DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0063' ORDER BY ACTIVITY_DATE DESC LIMIT 500"", ""SELECT * FROM tickets WHERE ACCOUNT_ID = 'ACC-0063' ORDER BY CREATED_DATE DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0063' ORDER BY ACTIVITY_DATE DESC LIMIT 1"", ""... and 270 more queries (one per account scanned)""]}}, {""name"": ""list_my_open_deals"", ""args"": {}, ""method"": {""scope"": ""open deals owned by lena.koehler@personio.de"", ""definitions"": [""open deal = stage in Discovery, Qualification, Demo, Proposal or Negotiation""], ""note"": ""count and total_eur are authoritative (computed in code); this list is complete for the stated filters"", ""sql"": [""SELECT o.*, a.COMPANY_NAME, a.STATUS AS ACCOUNT_STATUS, a.SEGMENT FROM opportunities o JOIN accounts a ON o.ACCOUNT_ID = a.ACCOUNT_ID WHERE a.OWNER_AE = 'lena.koehler@personio.de' AND o.STAGE IN ('Discovery','Qualification','Demo','Proposal','Negotiation') ORDER BY o.CLOSE_DATE""]}}]","**Method:** Book-wide priorities from risk-ranked scan (top 5 of 41 accounts in your book, by high-severity signals then nearest close) combined with your open-deals deadline view (43 open deals, €3,715,493 total, scope: your book) [source: risk signals; source: opportunities].
+
+**Top risk accounts (highest severity first):**
+
+1. **Cobalt Manufacturing B.V.** (ACC-0010, customer, SMB) — 3 high signals: usage down 59% over the tracked period, only 1 stakeholder engaged in last 60 days with open deals in play, no Economic Buyer contact. Renewal closes 2026-06-27 (still in Qualification), Expansion deal stuck in Proposal 31 days. [source: risk signals]
+2. **Halcyon Hospitality Group** (ACC-0002, customer, MM) — 3 high signals: usage down 42%, no Economic Buyer, HiBob mentioned in account activity. Renewal closes 2026-06-19, in Negotiation. [source: risk signals]
+3. **Forge Logistics ApS** (ACC-0016, customer, MM) — no Economic Buyer, HiBob mentioned. Renewal closes 2026-07-06, in Demo. [source: risk signals]
+4. **Fjord Logistics AS** (ACC-0003, prospect, ENT) — no Economic Buyer, Workday mentioned. Next close 2026-07-26. [source: risk signals]
+5. **Ridge Financial Services ApS** (ACC-0049, customer, MM) — HiBob mentioned; renewal stuck in Demo 33 days, no touchpoints in 32 days. Renewal closes 2026-07-26. [source: risk signals]
+
+**Nearest deadlines in your open pipeline (43 deals, €3,715,493 total):**
+- Nimbus Solutions Ltd – Expansion, €42,555, Proposal, closes 2026-06-06 [source: opportunities]
+- Lattice Professional Services ApS – Expansion, €15,337, Discovery, closes 2026-06-10 [source: opportunities]
+- Norden Manufacturing AB – New Business, €168,000, Proposal (94 days in stage — stalled), closes 2026-06-13 [source: opportunities]
+- Tide Solutions Ltd – Expansion, €70,487, Discovery, closes 2026-06-14 [source: opportunities]
+- Vault Education ApS – New Business, €11,289, Proposal, closes 2026-06-14 [source: opportunities]
+- Brightline Retail GmbH – Renewal 2026, €92,000, Negotiation, closes 2026-06-15 [source: opportunities]
+
+**Bottom line for today:** Cobalt Manufacturing B.V. and Halcyon Hospitality Group carry the most risk with renewals closing inside 30 days — worth a call today. Also flag Norden Manufacturing AB's Proposal stage sitting 94 days with a close date of 2026-06-13 — that deal is stalled and closing soon.
+
+Note: I can't see your calendar, so calls booked today may reorder this.",22.8,20782,1359,0.082731
+2026-07-16T15:11:07.319909,lena.koehler@personio.de,anthropic,claude-sonnet-5,what are its latest activites?,[],"Multiple accounts are active in this conversation (Cobalt Manufacturing B.V., Halcyon Hospitality Group, Forge Logistics ApS, Fjord Logistics AS, Ridge Financial Services ApS, plus the pipeline deals). Which account's activities do you want?",3.2,6733,175,0.022824
+2026-07-16T15:11:32.932346,lena.koehler@personio.de,anthropic,claude-sonnet-5,Halyon,"[{""name"": ""find_account"", ""args"": {""query"": ""Halyon""}}, {""name"": ""find_account"", ""args"": {""query"": ""Halcyon""}}, {""name"": ""get_activities"", ""args"": {""account_id"": ""ACC-0002""}, ""method"": {""scope"": ""activities on ACC-0002"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0002'"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0002' ORDER BY ACTIVITY_DATE DESC LIMIT 25""]}}]","Latest activities for **Halcyon Hospitality Group** (ACC-0002), newest first [source: activities]:
+
+- **2026-05-27, Email:** champion replied saying they are reviewing alternatives this quarter — concerning
+- **2026-05-20, Call:** exec sponsor on call — frustrated by payroll error in March, asked about credits
+- **2026-05-12, Internal note:** customer sentiment slipping, multiple unresolved tickets; need exec alignment before renewal
+- **2026-04-22, Meeting (QBR):** adoption flat, no expansion appetite, champion mentioned HiBob in passing
+- **2026-04-12, Email:** quick ping on next steps (tied to OPP-00003)
+- **2026-04-07, Internal note:** recommend doubling down on usage review
+- **2026-03-26, Meeting:** QBR/EBR with leadership
+- **2026-03-19, Call:** discovery call with Mateo Henriksen
+- **2026-03-04, Call:** multithreading call — brought in head of finance
+- **2026-01-26, Call:** renewal check-in
+- **2026-01-24, Email:** pricing question from Mateo Henriksen
+- **2026-01-19 / 01-15, Email:** intro to procurement (two touches)
+
+Most notable: the champion signaling they're reviewing alternatives (2026-05-27) and the exec sponsor's frustration over a March payroll error with a credit ask (2026-05-20) — both after the internal note flagging slipping sentiment (2026-05-12). This lines up with the risk sweep's HiBob mention and no-Economic-Buyer signals already flagged for Halcyon Hospitality Group.",17.7,30995,911,0.10665
+2026-07-16T16:01:03.561933,lena.koehler@personio.de,anthropic,claude-sonnet-5,How should I prepare for my next call with Cobalt Manufacturing B.V.?,"[{""name"": ""find_account"", ""args"": {""query"": ""Cobalt Manufacturing B.V.""}}, {""name"": ""run_risk_sweep"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""single account ACC-0010, all rules evaluated"", ""definitions"": [""signals are deterministic coded rules; each carries its evidence and rule_source""], ""note"": null, ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM usage_data WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY MONTH"", ""SELECT * FROM opportunities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CLOSE_DATE"", ""SELECT * FROM contacts WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY LAST_INTERACTION DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 500"", ""SELECT * FROM tickets WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CREATED_DATE DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 1""]}}, {""name"": ""get_opportunities"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all opportunities on ACC-0010"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM opportunities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CLOSE_DATE""]}}, {""name"": ""get_contacts"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all contacts on ACC-0010"", ""definitions"": [""DAYS_SINCE_LAST_TOUCH is computed from the activity log; the raw LAST_INTERACTION field goes stale""], ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM contacts WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY LAST_INTERACTION DESC"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY ACTIVITY_DATE DESC LIMIT 500""]}}, {""name"": ""get_activities"", ""args"": {""account_id"": ""ACC-0010"", ""since"": ""2026-04-02""}, ""method"": {""scope"": ""activities on ACC-0010 since 2026-04-02"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM activities WHERE ACCOUNT_ID = 'ACC-0010' AND ACTIVITY_DATE >= CAST('2026-04-02' AS DATE) ORDER BY ACTIVITY_DATE DESC LIMIT 25""]}}, {""name"": ""get_usage"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""monthly usage rows for ACC-0010"", ""definitions"": [""quote trends point-to-point with month names; negative values are corrupt and must be excluded and flagged""], ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM usage_data WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY MONTH""]}}, {""name"": ""get_tickets"", ""args"": {""account_id"": ""ACC-0010""}, ""method"": {""scope"": ""all support tickets for ACC-0010"", ""sql"": [""SELECT * FROM accounts WHERE ACCOUNT_ID = 'ACC-0010'"", ""SELECT * FROM tickets WHERE ACCOUNT_ID = 'ACC-0010' ORDER BY CREATED_DATE DESC""]}}, {""name"": ""read_knowledge_doc"", ""args"": {""name"": ""battlecard_workday""}}]","**What changed:**
+- Usage is down sharply: MAU was 26 in Dec 2025, cratered to 0 in Mar 2026, and sits at 17 in May 2026 [source: usage]. Sweep flags this as a 59% drop over the tracked period [source: risk signals].
+- P1 ticket (SSO login failing for 30+ users) opened 2026-04-20, resolved 2026-04-23 [source: tickets].
+- The Expansion deal (OPP-00014, EUR 32,256) has sat in Proposal for 31 days, close date 2026-07-13 [source: opportunities].
+
+**Flag:**
+- No Economic Buyer contact exists on the account — all three contacts are Users [source: contacts]; MEDDIC risk for unlocking renewal/expansion budget [source: risk signals].
+- Single-threaded: only Marco Costa (People Partner) has engaged in the last 60 days; playbook wants 3+ [source: risk signals].
+- Renewal (OPP-00013, EUR 27,267) closes in 26 days (2026-06-27) but is still in Qualification — playbook wants the renewal motion well underway by now [source: opportunities; risk signals].
+
+**Snapshot:**
+- Open deals: Renewal OPP-00013, EUR 27,267, Qualification, closes 2026-06-27; Expansion OPP-00014, EUR 32,256, Proposal, closes 2026-07-13 [source: opportunities].
+- Contacts: Marco Costa, People Partner, User, 3 days since last touch (engaged) [source: contacts]. Jonas Lopez, Payroll Specialist, User, 61 days since last touch [source: contacts]. Mateo Karlsson, HRBP, User, 106 days since last touch [source: contacts]. Missing: Economic Buyer, Technical contact.
+- Usage: 26 → 0 → 17 MAU (Dec 2025 → Mar 2026 → May 2026), no negative/corrupt values [source: usage].
+- Tickets: P1 SSO login failure, resolved 2026-04-23; P2 CSV import issue, resolved 2026-01-28. Both closed [source: tickets].
+
+**Competitor angle:**
+You already sent Marco Costa the Workday comparison battlecard on 2026-05-07 [source: activities]. Cobalt Manufacturing B.V. is SMB (26 employees) [source: accounts] — well below Workday's typical enterprise fit, so per the Workday battlecard's ""when we win"" criteria (European mid-market, fast deployment, small pragmatic HR team, TCO-sensitive) you're on strong ground [source: Workday battlecard]. If they push ""Workday is the standard,"" the counter: ""Standard for whom? At 800+ employees maybe — at 26, you're paying for capability you'll never use and adding months to timeline"" [source: Workday battlecard].
+
+**Other signals:**
+- No technical stakeholder is mapped on the account — playbook notes this has previously cost a deal to internal build when no IT contact existed [source: risk signals].
+
+**Reference:** No strong reference match found by the sweep.
+
+**Next actions:**
+- Usage drop: ask directly what's driving the MAU collapse (blocker, org change, dissatisfaction) before assuming renewal is safe.
+- Single-threading: use the upcoming call to identify and engage a second stakeholder beyond Marco Costa.
+- No Economic Buyer: push to get budget-holder visibility or introduction before the renewal decision point on 2026-06-27.",42.8,38744,3399,0.167217
