@@ -19,7 +19,6 @@ evals/results_2026070*.json
 evals/results_20260710*.json
 
 # --- docs held back until final edit (remove lines as they're finalized) --
-README.md
 ONE_PAGER.md
 QUALITY_JOURNEY.md
 MULTI_ACCOUNT_DISAMBIGUATION_SPEC.md
