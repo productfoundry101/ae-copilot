@@ -1,13 +1,20 @@
 """Run the eval suite against the live agent.
 
 Usage:
-  python evals/run_evals.py            all cases
-  python evals/run_evals.py nps        only cases whose id contains 'nps'
+  python evals/run_evals.py                 all cases, once each
+  python evals/run_evals.py nps             only cases whose id contains 'nps'
+  python evals/run_evals.py --runs 3        reliability@3: every case 3 times,
+                                            pass-rate reported per case
+
+A case is only counted reliable when it passes EVERY run: single-run green
+proves correctness-today, repeated runs measure stability under sampling.
+Cases at 2/3 are flaky — their answer path depends on model judgment
+somewhere it shouldn't, which is a diagnosis, not just a score.
 
 Every prompt or rule change should be followed by a full run. Failures on
 grounding traps are critical: an invented fact is worse than any missing
-feature. Results are saved to evals/results_*.json so runs can be compared
-over time.
+feature. Results are saved to evals/results_*.json (provider and run count
+in the filename) so runs can be compared across providers and over time.
 """
 
 from __future__ import annotations
@@ -138,32 +145,65 @@ def check_case(case: dict) -> dict:
 
 
 def main():
-    needle = sys.argv[1] if len(sys.argv) > 1 else ""
-    cases = [c for c in CASES if needle in c["id"]]
-    print(f"Running {len(cases)} eval case(s) with provider={agent.PROVIDER}\n")
-    pause = float(__import__("os").getenv("EVAL_PAUSE_S", "15"))
+    import argparse
+    import os
+
+    ap = argparse.ArgumentParser()
+    ap.add_argument("filter", nargs="?", default="",
+                    help="only run cases whose id contains this substring")
+    ap.add_argument("--runs", type=int, default=1,
+                    help="repetitions per case (reliability@N)")
+    args = ap.parse_args()
+    cases = [c for c in CASES if args.filter in c["id"]]
+    pause = float(os.getenv("EVAL_PAUSE_S", "15"))
+    print(f"Running {len(cases)} eval case(s) x {args.runs} run(s) "
+          f"with provider={agent.PROVIDER}\n")
     results = []
-    for i, case in enumerate(cases):
-        if i:
-            time.sleep(pause)  # stay under tokens-per-minute rate limits
-        r = check_case(case)
-        results.append(r)
-        mark = "PASS" if r["pass"] else "FAIL"
-        print(f"  {mark}  {r['id']}  ({r['latency_s']}s)")
-        for f in r["failures"]:
-            print(f"        - {f}")
-    passed = sum(r["pass"] for r in results)
-    self_graded = sum(1 for r in results
+    first = True
+    for case in cases:
+        runs = []
+        for _ in range(args.runs):
+            if not first:
+                time.sleep(pause)  # stay under tokens-per-minute rate limits
+            first = False
+            runs.append(check_case(case))
+        passes = sum(r["pass"] for r in runs)
+        if args.runs == 1:
+            mark = "PASS " if passes else "FAIL "
+        elif passes == args.runs:
+            mark = f"PASS {passes}/{args.runs}"
+        elif passes == 0:
+            mark = f"FAIL {passes}/{args.runs}"
+        else:
+            mark = f"FLAKY {passes}/{args.runs}"
+        lats = ", ".join(f"{r['latency_s']}s" for r in runs)
+        print(f"  {mark:9} {case['id']}  ({lats})")
+        seen = set()
+        for r in runs:
+            for f in r["failures"]:
+                if f not in seen:
+                    seen.add(f)
+                    print(f"        - {f}")
+        results.append({"id": case["id"], "passes": passes,
+                        "total": args.runs, "runs": runs})
+    reliable = sum(1 for r in results if r["passes"] == r["total"])
+    flaky = sum(1 for r in results if 0 < r["passes"] < r["total"])
+    failing = sum(1 for r in results if r["passes"] == 0)
+    line = f"\n{reliable}/{len(results)} cases pass every run"
+    if args.runs > 1:
+        line += f" (reliability@{args.runs}) · {flaky} flaky · {failing} failing"
+    print(line)
+    self_graded = sum(1 for res in results for r in res["runs"]
                       if r.get("judge") and "SELF-GRADED" in r["judge"])
-    print(f"\n{passed}/{len(results)} passed")
     if self_graded:
-        print(f"WARNING: {self_graded} case(s) were judged by the agent's "
+        print(f"WARNING: {self_graded} run(s) were judged by the agent's "
               f"own provider (cross-provider judge unavailable) — treat "
               f"their pass/fail with less confidence")
-    out = Path(__file__).parent / f"results_{datetime.now():%Y%m%d_%H%M%S}.json"
+    out = (Path(__file__).parent /
+           f"results_{datetime.now():%Y%m%d_%H%M%S}_{agent.PROVIDER}_x{args.runs}.json")
     out.write_text(json.dumps(results, indent=2))
     print(f"Details saved to {out}")
-    if passed < len(results):
+    if reliable < len(results):
         sys.exit(1)
 
 
