@@ -513,8 +513,13 @@ def _run_anthropic(history, ae_email, prior_tool_calls):
         # 3000 tokens: a 2000 cap was observed truncating a verbose call-prep
         # answer mid-word, silently amputating the Reference / Next actions
         # sections. The skeleton keeps answers shorter; this is the backstop.
+        # NOTE: no temperature parameter here, on purpose. claude-sonnet-5
+        # rejects it outright (400: "'temperature' is deprecated for this
+        # model"), so run-to-run consistency on this path comes from the
+        # prompt's fixed answer skeleton, not from a sampling knob. Do not
+        # re-add it (this has now bitten us twice).
         resp = _with_retries(lambda: client.messages.create(
-            model=ANTHROPIC_MODEL, max_tokens=3000, temperature=0.2,
+            model=ANTHROPIC_MODEL, max_tokens=3000,
             system=system_prompt(ae_email),
             tools=_anthropic_tools(), messages=messages))
         if resp.usage:
