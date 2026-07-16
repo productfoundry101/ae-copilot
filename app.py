@@ -208,10 +208,88 @@ def format_answer(text: str) -> str:
     return re.sub(r"\[([^\]\n]+)\]", _cite_sub, text)
 
 
+# Human operation labels per tool: the step list reads as "what happened",
+# with the data sources demoted to a per-step "reads:" detail.
+_TOOL_OPS = {
+    "find_account": "Account lookup",
+    "list_my_accounts": "Fetched your account list",
+    "list_my_open_deals": "Fetched open deals",
+    "get_book_priorities": "Ranked book by risk (top 5 view)",
+    "get_stats": "Computed counts & totals",
+    "run_risk_sweep": "Risk signal sweep",
+    "scan_book_signals": "Scanned every account for signals",
+    "get_opportunities": "Fetched opportunities",
+    "get_contacts": "Fetched contacts",
+    "get_activities": "Fetched activity log",
+    "get_usage": "Fetched product usage",
+    "get_tickets": "Fetched support tickets",
+    "list_knowledge_docs": "Browsed the document library",
+    "read_knowledge_doc": "Read document",
+}
+
+_ACCOUNT_ARG_TOOLS = {"run_risk_sweep", "get_opportunities", "get_contacts",
+                      "get_activities", "get_usage", "get_tickets"}
+
+
+@st.cache_data(show_spinner=False)
+def _acct_name(account_id: str) -> str:
+    acct = db.get_account(account_id)
+    return acct["COMPANY_NAME"] if acct else account_id
+
+
+def _grouped_calls(calls: list[dict]) -> list[dict]:
+    """Collapse repeated calls to the same tool into one step ('Risk signal
+    sweep × 2: Halcyon, Cobalt'). Gated (blocked) calls group separately so
+    the pause is visible as its own step."""
+    groups: list[dict] = []
+    index: dict = {}
+    for c in calls:
+        key = (c["name"], bool(c.get("gated")))
+        if key in index:
+            groups[index[key]]["calls"].append(c)
+        else:
+            index[key] = len(groups)
+            groups.append({"name": c["name"], "gated": bool(c.get("gated")),
+                           "calls": [c]})
+    return groups
+
+
+def _step_detail(name: str, group: list[dict]) -> str:
+    """The step's specifics, derived from call args (never model prose)."""
+    def uniq(items):
+        return list(dict.fromkeys(x for x in items if x))
+    if name == "find_account":
+        terms = uniq(f"“{c['args'].get('query', '')}”" for c in group)
+        return "searched " + ", ".join(terms) if terms else ""
+    if name in _ACCOUNT_ARG_TOOLS:
+        names = uniq(_acct_name(str(c["args"].get("account_id") or ""))
+                     for c in group if c["args"].get("account_id"))
+        return ", ".join(names)
+    if name == "read_knowledge_doc":
+        items = []
+        for c in group:
+            doc = _DOC_NAMES.get(c["args"].get("name", ""),
+                                 c["args"].get("name", ""))
+            sec = c["args"].get("section")
+            items.append(f"{doc} › {sec}" if sec else doc)
+        return "; ".join(dict.fromkeys(items))
+    if name == "get_stats":
+        scopes = {"mine": "your book", "company": "company-wide"}
+        return ", ".join(uniq(scopes.get(c["args"].get("scope", ""), "")
+                              for c in group))
+    if name == "scan_book_signals":
+        sigs = uniq(c["args"].get("signal") for c in group)
+        return ("filter: " + ", ".join(sigs)) if sigs else "all signal types"
+    return ""
+
+
 def render_sources(calls: list[dict]):
-    """AE view: which data sources the answer used (deduped, plain names), with
-    an expandable 'How this was calculated' for the method + real-parameter
-    queries. Everything here is machine-authored; the model never writes it."""
+    """AE view: which data sources the answer used (deduped, plain names), plus
+    an expandable 'How this was calculated' panel. Panel layout: the answer's
+    contract first (scope, definitions & constraints, coverage, consolidated
+    across all calls), then numbered steps in execution order, each with a
+    collapsed technical drill-down (raw calls + the SQL actually run).
+    Everything here is machine-authored; the model never writes it."""
     sources = answer_sources(calls)
     blocked = [c for c in calls if c.get("gated")]
     chips = " · ".join(f":blue[{s}]" for s in sources) or ":grey[none]"
@@ -221,50 +299,107 @@ def render_sources(calls: list[dict]):
     st.markdown(line)
 
     with st.expander("How this was calculated"):
+        methods = [c.get("method") or {} for c in calls if not c.get("gated")]
+
+        # --- the answer's contract, consolidated and deduped ---------------
+        acct_names = []
         for c in calls:
-            m = c.get("method") or {}
-            src = ", ".join(call_sources(c)) or "—"
-            st.markdown(f"**{src}**")
-
-            # Lead with the definitions and constraints applied (what "churn",
-            # "priorities", date windows etc. mean for THIS answer).
-            defs = ([m["definition"]] if m.get("definition") else []) + m.get("definitions", [])
-            defs = [d for d in defs if not _is_noise(d)]
-            constraints = _constraints_from_scope(m.get("scope", ""))
-            if defs or constraints:
-                st.caption("**Definitions & constraints**")
-                for d in defs:
-                    st.caption(f"• {d}")
-                for cst in constraints:
-                    st.caption(f"• {cst}")
-
-            # Then who/how much.
-            meta = []
-            base_scope = _scope_headline(m.get("scope", ""))
-            if base_scope:
-                meta.append(base_scope)
+            if c["name"] in _ACCOUNT_ARG_TOOLS and not c.get("gated"):
+                aid = str((c.get("args") or {}).get("account_id") or "")
+                if aid and _acct_name(aid) not in acct_names:
+                    acct_names.append(_acct_name(aid))
+        scope_bits = []
+        if acct_names:
+            label = "account" if len(acct_names) == 1 else "accounts"
+            scope_bits.append(f"{label}: {', '.join(acct_names)}")
+        for m in methods:
+            h = _scope_headline(m.get("scope", ""))
+            # per-account scopes (contain a raw id) are covered by the line
+            # above; keep only book/company-level headlines
+            if h and "ACC-" not in h and h not in scope_bits:
+                scope_bits.append(h)
+        defs, constraints, coverage = [], [], []
+        for m in methods:
+            for d in (([m["definition"]] if m.get("definition") else [])
+                      + list(m.get("definitions", []))):
+                if not _is_noise(d) and d not in defs:
+                    defs.append(d)
+            for cst in _constraints_from_scope(m.get("scope", "")):
+                if cst not in constraints:
+                    constraints.append(cst)
             if "accounts_scanned" in m:
-                meta.append(f"{m['accounts_scanned']} accounts checked, "
-                            f"{m['accounts_flagged']} flagged")
-            if m.get("note") and not _is_noise(m["note"]):
-                meta.append(m["note"])
-            if meta:
-                st.caption("  \n".join(meta))
+                cov = (f"{m['accounts_scanned']} accounts checked, "
+                       f"{m['accounts_flagged']} flagged")
+                if cov not in coverage:
+                    coverage.append(cov)
 
-            # Finally, the actual queries — collapsed by default (HTML details,
-            # since Streamlit forbids an expander nested inside an expander).
-            sqls = m.get("sql", [])
+        if scope_bits:
+            st.markdown("**Scope:** " + " · ".join(scope_bits))
+        if coverage:
+            st.caption(" · ".join(coverage))
+        if defs or constraints:
+            st.markdown("**Definitions & constraints**")
+            for d in defs:
+                st.caption(f"• {d}")
+            for cst in constraints:
+                st.caption(f"• {cst}")
+        st.divider()
+
+        # --- the steps, in execution order ----------------------------------
+        st.markdown("**Steps**")
+        for i, g in enumerate(_grouped_calls(calls), 1):
+            name, group = g["name"], g["calls"]
+            if g["gated"]:
+                st.markdown(f"{i}\\. ⚠ **Paused** — asked which account "
+                            "you meant before touching the data")
+                note = (group[0].get("method") or {}).get("note", "")
+                if note:
+                    st.caption(note)
+                continue
+            times = f" × {len(group)}" if len(group) > 1 else ""
+            label = _TOOL_OPS.get(name, name) + times
+            detail = _step_detail(name, group)
+            st.markdown(f"{i}\\. **{label}**" + (f": {detail}" if detail else ""))
+            reads = []
+            for c in group:
+                for s in call_sources(c):
+                    if s not in reads:
+                        reads.append(s)
+            notes = []
+            for c in group:
+                note = (c.get("method") or {}).get("note", "")
+                if note and not _is_noise(note) and note not in notes:
+                    notes.append(note)
+            sub = []
+            if reads and name != "read_knowledge_doc":
+                sub.append("reads: " + ", ".join(reads))
+            sub.extend(notes)
+            if sub:
+                st.caption("  \n".join(sub))
+
+            # technical drill-down: raw calls + the SQL actually run,
+            # collapsed (HTML details; Streamlit forbids nested expanders)
+            raw = [f"{c['name']}({c.get('args')})" for c in group]
+            sqls = []
+            for c in group:
+                for q in (c.get("method") or {}).get("sql", []):
+                    if q not in sqls:
+                        sqls.append(q)
+            body = "".join(
+                f"<div style='margin:4px 0;font-family:monospace;font-size:12px;"
+                f"opacity:0.55'>{html.escape(r)}</div>" for r in raw)
+            body += "".join(
+                f"<div style='margin:4px 0;font-family:monospace;font-size:12px;"
+                f"white-space:pre-wrap;opacity:0.8'>{html.escape(q)}</div>"
+                for q in sqls)
+            summary = f"Technical detail: {len(raw)} call(s)"
             if sqls:
-                body = "".join(
-                    f"<div style='margin:4px 0;font-family:monospace;font-size:12px;"
-                    f"white-space:pre-wrap;color:#334155'>{html.escape(q)}</div>"
-                    for q in sqls)
-                st.markdown(
-                    f"<details><summary style='cursor:pointer;color:#64748b;"
-                    f"font-size:13px'>View SQL queries ({len(sqls)})</summary>"
-                    f"<div style='padding:6px 0'>{body}</div></details>",
-                    unsafe_allow_html=True)
-            st.divider()
+                summary += f", {len(sqls)} SQL " + ("query" if len(sqls) == 1 else "queries")
+            st.markdown(
+                f"<details><summary style='cursor:pointer;opacity:0.6;"
+                f"font-size:13px'>{summary}</summary>"
+                f"<div style='padding:6px 0'>{body}</div></details>",
+                unsafe_allow_html=True)
 
 
 def start_conversation(question: str):
